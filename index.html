@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+ 
 <title>MLBB Sri Lanka Season 1</title>
-
+ 
 <style>
 *{
 margin:0;
@@ -13,32 +13,23 @@ padding:0;
 box-sizing:border-box;
 font-family:'Segoe UI',sans-serif;
 }
-
+ 
 body{
-body{
-    background-image:url('https://i.postimg.cc/xdtdfFDG/PASCOLL-BUANGG.jpg');
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-
-    padding:20px;
-    color:white;
-    min-height:100vh;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+padding:20px;
+color:white;
 }
-
+ 
 .container{
-    max-width:1000px;
-    margin:auto;
-    background:rgba(17,24,39,0.88);
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
-    padding:25px;
-    border-radius:20px;
-    box-shadow:0 0 25px rgba(255,215,0,.2);
-    border:1px solid rgba(255,215,0,.25);
+max-width:1000px;
+margin:auto;
+background:#111827;
+padding:25px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(255,215,0,.15);
+border:1px solid rgba(255,215,0,.2);
 }
-
+ 
 .title{
 text-align:center;
 font-size:32px;
@@ -47,7 +38,7 @@ color:#FFD700;
 margin-bottom:25px;
 text-transform:uppercase;
 }
-
+ 
 .slide-btn{
 width:100%;
 background:linear-gradient(135deg,#FFD700,#facc15);
@@ -62,63 +53,63 @@ margin-bottom:10px;
 color:#111827;
 transition:.3s;
 }
-
+ 
 .slide-btn:hover{
 transform:translateY(-2px);
 }
-
+ 
 .content{
 display:none;
 overflow:hidden;
 animation:fade .3s ease;
 }
-
+ 
 @keyframes fade{
 from{opacity:0;}
 to{opacity:1;}
 }
-
+ 
 table{
 width:100%;
 border-collapse:collapse;
 overflow:hidden;
 border-radius:12px;
 }
-
+ 
 thead{
 background:#FFD700;
 color:#111827;
 }
-
+ 
 th,td{
 padding:14px;
 text-align:center;
 }
-
+ 
 tbody tr{
 background:#1f2937;
 border-bottom:1px solid #374151;
 }
-
+ 
 tbody tr:nth-child(even){
 background:#273549;
 }
-
+ 
 .upper{
 background:rgba(34,197,94,.15)!important;
 font-weight:bold;
 }
-
+ 
 .playoff{
 background:rgba(250,204,21,.12)!important;
 font-weight:bold;
 }
-
+ 
 .eliminated{
 background:rgba(239,68,68,.12)!important;
 font-weight:bold;
 }
-
+ 
 .match-card{
 background:#1f2937;
 padding:15px;
@@ -126,12 +117,12 @@ border-radius:12px;
 margin-bottom:10px;
 border-left:4px solid #FFD700;
 }
-
+ 
 .match-card h4{
 color:#FFD700;
 margin-bottom:5px;
 }
-
+ 
 .note{
 margin-top:25px;
 background:#1f2937;
@@ -139,42 +130,42 @@ padding:20px;
 border-radius:12px;
 line-height:1.9;
 }
-
+ 
 .note h3{
 color:#FFD700;
 margin-bottom:10px;
 }
-
+ 
 .note ul{
 padding-left:20px;
 }
-
+ 
 .footer{
 margin-top:20px;
 text-align:center;
 color:#9ca3af;
 font-size:14px;
 }
-
+ 
 </style>
 </head>
-
+ 
 <body>
-
+ 
 <div class="container">
-
+ 
 <div class="title">
 🏆 MLBB Sri Lanka Season 1
 </div>
-
+ 
 <button class="slide-btn" onclick="toggleBox('standings')">
 📊 Klasemen
 </button>
-
+ 
 <div id="standings" class="content">
-
+ 
 <table>
-
+ 
 <thead>
 <tr>
 <th>#</th>
@@ -185,9 +176,9 @@ font-size:14px;
 <th>Poin</th>
 </tr>
 </thead>
-
+ 
 <tbody>
-
+ 
 <tr class="upper">
 <td>1</td>
 <td>Team A</td>
@@ -196,7 +187,7 @@ font-size:14px;
 <td>0</td>
 <td>0</td>
 </tr>
-
+ 
 <tr class="upper">
 <td>2</td>
 <td>Team B</td>
@@ -205,7 +196,7 @@ font-size:14px;
 <td>0</td>
 <td>0</td>
 </tr>
-
+ 
 <tr class="playoff">
 <td>3</td>
 <td>Team C</td>
@@ -214,7 +205,7 @@ font-size:14px;
 <td>0</td>
 <td>0</td>
 </tr>
-
+ 
 <tr class="playoff">
 <td>4</td>
 <td>Team D</td>
@@ -223,7 +214,7 @@ font-size:14px;
 <td>0</td>
 <td>0</td>
 </tr>
-
+ 
 <tr class="eliminated">
 <td>5</td>
 <td>Team E</td>
@@ -232,7 +223,7 @@ font-size:14px;
 <td>0</td>
 <td>0</td>
 </tr>
-
+ 
 <tr class="eliminated">
 <td>6</td>
 <td>Team F</td>
@@ -241,39 +232,39 @@ font-size:14px;
 <td>0</td>
 <td>0</td>
 </tr>
-
+ 
 </tbody>
-
+ 
 </table>
 </div>
-
+ 
 <button class="slide-btn" onclick="toggleBox('results')">
 🎮 Hasil Pertandingan
 </button>
-
+ 
 <div id="results" class="content">
-
+ 
 <div class="match-card">
 <h4>Match 1</h4>
 Team A 2 - 0 Team B
 </div>
-
+ 
 <div class="match-card">
 <h4>Match 2</h4>
 Team C 2 - 1 Team D
 </div>
-
+ 
 <div class="match-card">
 <h4>Match 3</h4>
 Team E 0 - 2 Team F
 </div>
-
+ 
 </div>
-
+ 
 <div class="note">
-
+ 
 <h3>📌 NOTED :</h3>
-
+ 
 <ul>
 <li>🥇 Peringkat 1 & 2 = Upper Bracket Playoff</li>
 <li>🥈 Peringkat 3 & 4 = Playoff</li>
@@ -284,30 +275,30 @@ Team E 0 - 2 Team F
 <li>🟡 Kalah (1 - 2) = 1 Poin</li>
 <li>❌ Kalah (0 - 2) = 0 Poin</li>
 </ul>
-
+ 
 </div>
-
+ 
 <div class="footer">
 © MLBB Sri Lanka Season 1
 </div>
-
+ 
 </div>
-
+ 
 <script>
-
+ 
 function toggleBox(id){
-
+ 
 let box=document.getElementById(id);
-
+ 
 if(box.style.display==="block"){
 box.style.display="none";
 }else{
 box.style.display="block";
 }
-
+ 
 }
-
+ 
 </script>
-
+ 
 </body>
 </html>
