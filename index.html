@@ -3,266 +3,464 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
 <title>MLBB Sri Lanka Season 1</title>
- 
 <style>
+
 .prize-card{
+
     padding:20px;
+
     margin-bottom:20px;
+
     border-radius:15px;
+
     color:white;
+
     box-shadow:0 5px 15px rgba(0,0,0,.25);
-}
 
+}
+ 
 .prize-card h3{
+
     margin-bottom:10px;
-}
 
+}
+ 
 .prize-card ul{
+
     margin-top:10px;
+
     padding-left:20px;
-    line-height:1.8;
-}
 
+    line-height:1.8;
+
+}
+ 
 .gold-card{
+
     background:linear-gradient(135deg,#FFD700,#f59e0b);
-    color:#111827;
-}
 
+    color:#111827;
+
+}
+ 
 .silver-card{
+
     background:linear-gradient(135deg,#d1d5db,#9ca3af);
+
     color:#111827;
-}
 
+}
+ 
 .bronze-card{
+
     background:linear-gradient(135deg,#cd7f32,#92400e);
-}
 
+}
+ 
 .prize-card:hover{
+
     transform:translateY(-3px);
+
     transition:.3s;
-}
 
+}
+ 
 .team-list{
-    margin-top:25px;
-}
 
+    margin-top:25px;
+
+}
+ 
 .team-list h3{
+
     color:#FFD700;
+
     text-align:center;
+
     margin-bottom:15px;
+
     font-size:22px;
-}
 
+}
+ 
 .team-card{
+
     background:#1f2937;
+
     border-left:4px solid #FFD700;
+
     padding:15px;
+
     border-radius:12px;
+
     margin-bottom:12px;
+
     line-height:1.8;
-}
 
+}
+ 
 .team-card h4{
+
     color:#FFD700;
+
     margin-bottom:5px;
-}
 
+}
+ 
 .players{
+
     color:#e5e7eb;
-}
 
+}
+ 
 .sponsors{
+
     margin-top:25px;
+
     text-align:center;
-}
 
+}
+ 
 .sponsors h3{
+
     color:#FFD700;
+
     margin-bottom:15px;
+
+}
+ 
+.sponsor-logos{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+}
+ 
+.sponsor-logos img{
+
+    width:100px;
+
+    height:100px;
+
+    object-fit:contain;
+
+    background:#fff;
+
+    padding:10px;
+
+    border-radius:12px;
+
+    box-shadow:0 0 10px rgba(255,215,0,.2);
+
+    transition:.3s;
+
+}
+ 
+.sponsor-logos img:hover{
+
+    transform:scale(1.05);
+
 }
 
-.sponsor-logos{
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:'Segoe UI',sans-serif;
+
+}
+
+body{
+
+background:linear-gradient(135deg,#0f172a,#1e293b);
+
+padding:20px;
+
+color:white;
+
+}
+
+.container{
+
+max-width:1000px;
+
+margin:auto;
+
+background:#111827;
+
+padding:25px;
+
+border-radius:20px;
+
+box-shadow:0 0 25px rgba(255,215,0,.15);
+
+border:1px solid rgba(255,215,0,.2);
+
+}
+
+.title{
+
+text-align:center;
+
+font-size:32px;
+
+font-weight:bold;
+
+color:#FFD700;
+
+margin-bottom:25px;
+
+text-transform:uppercase;
+
+}
+
+.slide-btn{
+
+width:100%;
+
+background:linear-gradient(135deg,#FFD700,#facc15);
+
+border:none;
+
+padding:15px;
+
+font-size:18px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+border-radius:12px;
+
+margin-top:15px;
+
+margin-bottom:10px;
+
+color:#111827;
+
+transition:.3s;
+
+}
+
+.slide-btn:hover{
+
+transform:translateY(-2px);
+
+}
+
+.content{
+
+display:none;
+
+overflow:hidden;
+
+animation:fade .3s ease;
+
+}
+
+@keyframes fade{
+
+from{opacity:0;}
+
+to{opacity:1;}
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+overflow:hidden;
+
+border-radius:12px;
+
+}
+
+thead{
+
+background:#FFD700;
+
+color:#111827;
+
+}
+
+th,td{
+
+padding:14px;
+
+text-align:center;
+
+}
+
+tbody tr{
+
+background:#1f2937;
+
+border-bottom:1px solid #374151;
+
+}
+
+tbody tr:nth-child(even){
+
+background:#273549;
+
+}
+
+.upper{
+
+background:rgba(34,197,94,.15)!important;
+
+font-weight:bold;
+
+}
+
+.playoff{
+
+background:rgba(250,204,21,.12)!important;
+
+font-weight:bold;
+
+}
+
+.eliminated{
+
+background:rgba(239,68,68,.12)!important;
+
+font-weight:bold;
+
+}
+
+.match-card{
+
+background:#1f2937;
+
+padding:15px;
+
+border-radius:12px;
+
+margin-bottom:10px;
+
+border-left:4px solid #FFD700;
+
+}
+
+.match-card h4{
+
+color:#FFD700;
+
+margin-bottom:5px;
+
+}
+
+.note{
+
+margin-top:25px;
+
+background:#1f2937;
+
+padding:20px;
+
+border-radius:12px;
+
+line-height:1.9;
+
+}
+
+.note h3{
+
+color:#FFD700;
+
+margin-bottom:10px;
+
+}
+
+.note ul{
+
+padding-left:20px;
+
+}
+
+.footer{
+
+margin-top:20px;
+
+text-align:center;
+
+color:#9ca3af;
+
+font-size:14px;
+
+}
+.playoff-bracket{
     display:flex;
     justify-content:center;
-    gap:25px;
+    align-items:center;
+    gap:40px;
     flex-wrap:wrap;
+    margin-top:20px;
 }
 
-.sponsor-logos img{
-    width:100px;
-    height:100px;
-    object-fit:contain;
-    background:#fff;
-    padding:10px;
+.bracket-column{
+    display:flex;
+    flex-direction:column;
+    gap:50px;
+}
+
+.bracket-match{
+    width:220px;
+    background:#1f2937;
+    border:2px solid #374151;
     border-radius:12px;
-    box-shadow:0 0 10px rgba(255,215,0,.2);
-    transition:.3s;
+    overflow:hidden;
+    box-shadow:0 0 10px rgba(255,215,0,.15);
 }
 
-.sponsor-logos img:hover{
-    transform:scale(1.05);
+.bracket-title{
+    background:#FFD700;
+    color:#111827;
+    font-weight:bold;
+    text-align:center;
+    padding:10px;
 }
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
+
+.bracket-team{
+    padding:12px;
+    text-align:center;
+    border-top:1px solid #374151;
 }
- 
-body{
-background:linear-gradient(135deg,#0f172a,#1e293b);
-padding:20px;
-color:white;
+
+.bracket-final .bracket-title{
+    background:#22c55e;
 }
- 
-.container{
-max-width:1000px;
-margin:auto;
-background:#111827;
-padding:25px;
-border-radius:20px;
-box-shadow:0 0 25px rgba(255,215,0,.15);
-border:1px solid rgba(255,215,0,.2);
+
+.arrow{
+    font-size:40px;
+    color:#FFD700;
 }
- 
-.title{
-text-align:center;
-font-size:32px;
-font-weight:bold;
-color:#FFD700;
-margin-bottom:25px;
-text-transform:uppercase;
-}
- 
-.slide-btn{
-width:100%;
-background:linear-gradient(135deg,#FFD700,#facc15);
-border:none;
-padding:15px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-border-radius:12px;
-margin-top:15px;
-margin-bottom:10px;
-color:#111827;
-transition:.3s;
-}
- 
-.slide-btn:hover{
-transform:translateY(-2px);
-}
- 
-.content{
-display:none;
-overflow:hidden;
-animation:fade .3s ease;
-}
- 
-@keyframes fade{
-from{opacity:0;}
-to{opacity:1;}
-}
- 
-table{
-width:100%;
-border-collapse:collapse;
-overflow:hidden;
-border-radius:12px;
-}
- 
-thead{
-background:#FFD700;
-color:#111827;
-}
- 
-th,td{
-padding:14px;
-text-align:center;
-}
- 
-tbody tr{
-background:#1f2937;
-border-bottom:1px solid #374151;
-}
- 
-tbody tr:nth-child(even){
-background:#273549;
-}
- 
-.upper{
-background:rgba(34,197,94,.15)!important;
-font-weight:bold;
-}
- 
-.playoff{
-background:rgba(250,204,21,.12)!important;
-font-weight:bold;
-}
- 
-.eliminated{
-background:rgba(239,68,68,.12)!important;
-font-weight:bold;
-}
- 
-.match-card{
-background:#1f2937;
-padding:15px;
-border-radius:12px;
-margin-bottom:10px;
-border-left:4px solid #FFD700;
-}
- 
-.match-card h4{
-color:#FFD700;
-margin-bottom:5px;
-}
- 
-.note{
-margin-top:25px;
-background:#1f2937;
-padding:20px;
-border-radius:12px;
-line-height:1.9;
-}
- 
-.note h3{
-color:#FFD700;
-margin-bottom:10px;
-}
- 
-.note ul{
-padding-left:20px;
-}
- 
-.footer{
-margin-top:20px;
-text-align:center;
-color:#9ca3af;
-font-size:14px;
-}
- 
 </style>
 </head>
- 
 <body>
- 
 <div class="container">
- 
 <div class="title">
 &#127942; MLBB Sri Lanka Season 1
 </div>
- 
 <button class="slide-btn" onclick="toggleBox('standings')">
 &#128202; Klasemen
 </button>
- 
 <div id="standings" class="content">
- 
 <table>
- 
 <thead>
 <tr>
 <th>Pos</th>
@@ -270,12 +468,11 @@ font-size:14px;
 <th>Main</th>
 <th>Menang</th>
 <th>Kalah</th>
+<th>Match W/L</th>
 <th>Poin</th>
 </tr>
 </thead>
- 
 <tbody>
- 
 <tr class="upper">
 <td>1</td>
 <td>NAGAHITAM</td>
@@ -283,8 +480,8 @@ font-size:14px;
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 </tr>
- 
 <tr class="upper">
 <td>2</td>
 <td>BNF</td>
@@ -292,8 +489,8 @@ font-size:14px;
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 </tr>
- 
 <tr class="playoff">
 <td>3</td>
 <td>SABER SPRINT</td>
@@ -301,8 +498,8 @@ font-size:14px;
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 </tr>
- 
 <tr class="playoff">
 <td>4</td>
 <td>RASTA</td>
@@ -310,8 +507,8 @@ font-size:14px;
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 </tr>
- 
 <tr class="eliminated">
 <td>5</td>
 <td>BINTANG 1</td>
@@ -319,288 +516,375 @@ font-size:14px;
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 </tr>
- 
 <tr class="eliminated">
 <td>6</td>
 <td>SHAUN THE SHEEP</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td></td>
 <td>0</td>
 </tr>
- 
 </tbody>
- 
 </table>
 </div>
- 
 <button class="slide-btn" onclick="toggleBox('results')">
-&#127918; Hasil Pertandingan
+&#128293; PLAYOFF
 </button>
- 
 <div id="results" class="content">
- 
-<div class="match-card">
-<h4>Match 1</h4>
-23 juni 2026. 08.00 Waktu SL
+
+<div class="playoff-bracket">
+
+    <!-- ROUND 1 -->
+    <div class="bracket-column">
+
+        <div class="bracket-match">
+            <div class="bracket-title">
+                UPPER BRACKET (BO5)
+            </div>
+            <div class="bracket-team">
+                POS 1 
+            </div>
+            <div class="bracket-team">
+                POS 2 
+            </div>
+        </div>
+
+        <div class="bracket-match">
+            <div class="bracket-title">
+                LOWER BRACKET (BO5)
+            </div>
+            <div class="bracket-team">
+                POS 3 
+            </div>
+            <div class="bracket-team">
+                POS 4 
+            </div>
+        </div>
+
+    </div>
+
+    <div class="arrow">➜</div>
+
+    <!-- ROUND 2 -->
+    <div class="bracket-column">
+
+        <div class="bracket-match">
+            <div class="bracket-title">
+                FINAL
+            </div>
+            <div class="bracket-team">
+                Winner POS 1 vs POS 2
+            </div>
+        </div>
+
+        <div class="bracket-match">
+            <div class="bracket-title">
+                LOWER FINAL (BO5)
+            </div>
+            <div class="bracket-team">
+                Loser POS 1 vs POS 2
+            </div>
+            <div class="bracket-team">
+                Winner POS 3 vs POS 4
+            </div>
+        </div>
+
+    </div>
+
+    <div class="arrow">➜</div>
+
+    <!-- GRAND FINAL -->
+    <div class="bracket-column">
+
+        <div class="bracket-match bracket-final">
+            <div class="bracket-title">
+                GRAND FINAL (BO7)
+            </div>
+            <div class="bracket-team">
+                Winner FINAL
+            </div>
+            <div class="bracket-team">
+                Winner LOWER FINAL
+            </div>
+        </div>
+
+    </div>
+
 </div>
- 
-<div class="match-card">
-<h4>Match 2</h4>
-23 juni 2026. 08.00 Waktu SL
-</div>
- 
+
 </div>
 <button class="slide-btn" onclick="toggleBox('schedule')">
-&#128197; Jadwal Pertandingan
+&#128197; Hasil & Jadwal Pertandingan
 </button>
-
+ 
 <div id="schedule" class="content">
 
 <div class="match-card">
 <h4>23 Juni 2026</h4>
+
 TEAM NAGAHITAM vs TEAM SHAUN THE SHEEP
 </div>
-
+ 
 <div class="match-card">
 <h4>24 Juni 2026</h4>
+
 TEAM BNF vs TEAM BINTANG 1
 </div>
-
+ 
 <div class="match-card">
 <h4>25 Juni 2026</h4>
+
 TEAM SABER SPRINT vs TEAM RASTA
 </div>
-
+ 
 <div class="match-card">
 <h4>26 Juni 2026</h4>
+
 TEAM NAGAHITAM vs TEAM BINTANG 1
 </div>
-
+ 
 <div class="match-card">
 <h4>27 Juni 2026</h4>
+
 TEAM SHAUN THE SHEEP vs TEAM RASTA
 </div>
-
+ 
 <div class="match-card">
 <h4>28 Juni 2026</h4>
+
 TEAM BNF vs TEAM SABER SPRINT
 </div>
-
+ 
 <div class="match-card">
 <h4>29 Juni 2026</h4>
+
 TEAM NAGAHITAM vs TEAM RASTA
 </div>
-
+ 
 <div class="match-card">
 <h4>30 Juni 2026</h4>
+
 TEAM BINTANG 1 vs TEAM SABER SPRINT
 </div>
-
+ 
 <div class="match-card">
 <h4>01 Juli 2026</h4>
+
 TEAM SHAUN THE SHEEP vs TEAM BNF
 </div>
-
+ 
 <div class="match-card">
 <h4>02 Juli 2026</h4>
+
 TEAM NAGAHITAM vs TEAM SABER SPRINT
 </div>
-
+ 
 <div class="match-card">
 <h4>03 Juli 2026</h4>
+
 TEAM RASTA vs TEAM BNF
 </div>
-
+ 
 <div class="match-card">
 <h4>04 Juli 2026</h4>
+
 TEAM BINTANG 1 vs TEAM SHAUN THE SHEEP
 </div>
-
+ 
 <div class="match-card">
 <h4>04 Juli 2026</h4>
+
 TEAM NAGAHITAM vs TEAM BNF
 </div>
-
+ 
 <div class="match-card">
 <h4>05 Juli 2026</h4>
+
 TEAM SABER SPRINT vs TEAM SHAUN THE SHEEP
 </div>
-
+ 
 <div class="match-card">
 <h4>05 Juli 2026</h4>
+
 TEAM RASTA vs TEAM BINTANG 1
 </div>
-
+ 
 </div>
-
+ 
 <button class="slide-btn" onclick="toggleBox('roster')">
 &#128101; Roster
 </button>
-
+ 
 <div id="roster" class="content">
-
+ 
 <div class="team-list">
-
-
+ 
+ 
 <div class="team-card">
 <h4>TEAM NAGAHITAM</h4>
 <div class="players">
+
 KO DANIEL • KING AL • JASON • DANDI • NUEL
 </div>
 </div>
-
-
+ 
+ 
 <div class="team-card">
 <h4>TEAM BNF</h4>
 <div class="players">
+
 RISKI BOLEN • ARYA • RANGGA • KO RAMPART • FIKRI
 </div>
 </div>
-
-
+ 
+ 
 <div class="team-card">
 <h4>TEAM SABER SPRINT</h4>
 <div class="players">
+
 SAKUL • AGUS S • RP • BAIM • YOPE
 </div>
 </div>
-
-
+ 
+ 
 <div class="team-card">
 <h4>TEAM RASTA</h4>
 <div class="players">
+
 RIDWAN • ADELIN • SAWAL • TIYAS • APRI
 </div>
 </div>
-
-
+ 
+ 
 <div class="team-card">
 <h4>TEAM BINTANG 1</h4>
 <div class="players">
+
 GEO • FAUZAN • RISKY ANANDA • NOFENDRI • JUAN
 </div>
 </div>
-
-
+ 
+ 
 <div class="team-card">
 <h4>TEAM SHAUN THE SHEEP</h4>
 <div class="players">
+
 SANTRI • CELVIN • ILHAM • AZIS • VINCENT
 </div>
 </div>
-
+ 
 </div>
 </div>
 <button class="slide-btn" onclick="toggleBox('prizepool')">
 &#127942; Prize Pool WAROENG JAVA
 </button>
-
-<div id="prizepool" class="content">
-
-    <!-- JUARA 1 -->
-    <div class="prize-card gold-card">
-        <h3>&#129351; Juara 1</h3>
-        <p><strong>Parcel Sembako Ala Anak Kost</strong></p>
-
-        <ul>
-            <li>Indomie Mix Rasa x10</li>
-            <li>Telur Ayam 1 Pack x1</li>
-            <li>Saus ABC Pouch 380gr x1</li>
-            <li>Top Cappucino Renceng Isi 15 x1</li>
-            <li>Luwak White Coffee Renceng Isi 10 x1</li>
-            <li>Kentang Mustofa 300gr Toples x1</li>
-            <li>Makaroni Ngehe Toples x1</li>
-            <li>Usus Makaroni Ngehe Toples x1</li>
-            <li>Basreng Pedas Daun Jeruk 500gr x1</li>
-        </ul>
-    </div>
-
-
-    <!-- JUARA 2 -->
-    <div class="prize-card silver-card">
-        <h3>&#129352; Juara 2</h3>
-
-        <ul>
-            <li>Indomie Mix Rasa x10</li>
-            <li>Telur Ayam 1 Pack x1</li>
-            <li>Saus ABC Pouch 380gr x1</li>
-            <li>Top Cappucino Renceng Isi 15 x1</li>
-            <li>Luwak White Coffee Renceng Isi 10 x1</li>
-            <li>Kentang Mustofa 300gr Toples x1</li>
-            <li>Makaroni Ngehe Toples x1</li>
-            <li>Usus Makaroni Ngehe Toples x1</li>
-            <li>Basreng Pedas Daun Jeruk 500gr x1</li>
-        </ul>
-    </div>
-
-    <div class="prize-card bronze-card">
-        <h3>&#129353; Juara 3</h3>
-
-        <ul>
-            <li>Indomie Mix Rasa x10</li>
-            <li>Telur Ayam 1 Pack x1</li>
-            <li>Saus ABC Pouch 380gr x1</li>
-            <li>Top Cappucino Renceng Isi 15 x1</li>
-            <li>Luwak White Coffee Renceng Isi 10 x1</li>
-            <li>Kentang Mustofa 300gr Toples x1</li>
-            <li>Makaroni Ngehe Toples x1</li>
-            <li>Usus Makaroni Ngehe Toples x1</li>
-            <li>Basreng Pedas Daun Jeruk 500gr x1</li>
-        </ul>
-    </div>
-
-</div>
-
-<div class="note">
-
-<h3>&#128204; NOTED :</h3>
  
+<div id="prizepool" class="content">
+ 
+    <!-- JUARA 1 -->
+<div class="prize-card gold-card">
+<h3>&#129351; Juara 1</h3>
+
+ 
+        <ul>
+<li>Indomie Mix Rasa x10</li>
+<li>Telur Ayam 1 Pack x1</li>
+<li>Saus ABC Pouch 380gr x1</li>
+<li>Top Cappucino Renceng Isi 15 x1</li>
+<li>Luwak White Coffee Renceng Isi 10 x1</li>
+<li>Kentang Mustofa 300gr Toples x1</li>
+<li>Makaroni Ngehe Toples x1</li>
+<li>Usus Makaroni Ngehe Toples x1</li>
+<li>Basreng Pedas Daun Jeruk 500gr x1</li>
+</ul>
+</div>
+ 
+ 
+    <!-- JUARA 2 -->
+<div class="prize-card silver-card">
+<h3>&#129352; Juara 2</h3>
+ 
+        <ul>
+<li>Indomie Mix Rasa x10</li>
+<li>Telur Ayam 1 Pack x1</li>
+<li>Saus ABC Pouch 380gr x1</li>
+<li>Top Cappucino Renceng Isi 15 x1</li>
+<li>Luwak White Coffee Renceng Isi 10 x1</li>
+<li>Kentang Mustofa 300gr Toples x1</li>
+<li>Makaroni Ngehe Toples x1</li>
+<li>Usus Makaroni Ngehe Toples x1</li>
+<li>Basreng Pedas Daun Jeruk 500gr x1</li>
+</ul>
+</div>
+ 
+    <div class="prize-card bronze-card">
+<h3>&#129353; Juara 3</h3>
+ 
+        <ul>
+<li>Indomie Mix Rasa x10</li>
+<li>Telur Ayam 1 Pack x1</li>
+<li>Saus ABC Pouch 380gr x1</li>
+<li>Top Cappucino Renceng Isi 15 x1</li>
+<li>Luwak White Coffee Renceng Isi 10 x1</li>
+<li>Kentang Mustofa 300gr Toples x1</li>
+<li>Makaroni Ngehe Toples x1</li>
+<li>Usus Makaroni Ngehe Toples x1</li>
+<li>Basreng Pedas Daun Jeruk 500gr x1</li>
+</ul>
+</div>
+ 
+</div>
+ 
+<div class="note">
+ 
+<h3>&#128204; NOTED :</h3>
 <ul>
 <li>&#129351; Peringkat 1 & 2 = Upper Bracket Playoff</li>
 <li>&#129352; Peringkat 3 & 4 = Playoff</li>
 <li>&#10060; Peringkat 5 & 6 = Gugur</li>
-
+ 
 <li>&#9989; Menang (2 - 0) = 3 Poin</li>
 <li>&#9989; Menang (2 - 1) = 2 Poin</li>
 <li>&#128993; Kalah (1 - 2) = 1 Poin</li>
 <li>&#10060; Kalah (0 - 2) = 0 Poin</li>
 </ul>
- 
 </div>
- 
 <div class="footer">
 <div class="sponsors">
-    <h3>Official Sponsors</h3>
-
+<h3>Official Sponsors</h3>
+ 
     <div class="sponsor-logos">
-        <img src="https://i.postimg.cc/59kPWJPz/argentina-football-team-logo-national-flag-fifa-world-cup-usa-mexico-canada-vector-illustration-4566.webp" alt="Sponsor 1">
-        <img src="https://i.postimg.cc/1zHHC1n4/Dream-Theater-Metropolis-Pt-2-Scenes-from-a-Memory.jpg" alt="Sponsor 2">
-        <img src="https://i.postimg.cc/HnH8fVfF/potugal-kjalo.jpg" alt="Sponsor 3">
-		<img src="https://i.postimg.cc/Cxy7YB5s/image-(12).png" alt="Sponsor 4">
-    </div>
+<img src="https://i.postimg.cc/59kPWJPz/argentina-football-team-logo-national-flag-fifa-world-cup-usa-mexico-canada-vector-illustration-4566.webp%22 alt="Sponsor 1">
+<img src="https://i.postimg.cc/1zHHC1n4/Dream-Theater-Metropolis-Pt-2-Scenes-from-a-Memory.jpg" alt="Sponsor 2">
+<img src="https://i.postimg.cc/HnH8fVfF/potugal-kjalo.jpg" alt="Sponsor 3">
+<img src="https://i.postimg.cc/Cxy7YB5s/image-(12).png" alt="Sponsor 4">
 </div>
+</div>
+
 © MLBB Sri Lanka Season 1
 </div>
- 
 </div>
- 
 <script>
- 
+
 function toggleBox(id){
- 
+
 let box=document.getElementById(id);
- 
+
 if(box.style.display==="block"){
+
 box.style.display="none";
+
 }else{
+
 box.style.display="block";
+
 }
- 
+
 }
- 
 </script>
- 
 </body>
 </html>
+ 
