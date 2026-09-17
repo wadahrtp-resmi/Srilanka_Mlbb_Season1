@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -1514,6 +1515,97 @@ footer {
 
 }
 
+
+/* =====================================================
+   HERO PHOTO MARQUEE
+===================================================== */
+
+.hero-marquee {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-bottom: 35px;
+    overflow: hidden;
+    position: relative;
+    padding: 6px 0;
+    background: rgba(0,0,0,.18);
+    border-top: 1px solid rgba(245,196,81,.15);
+    border-bottom: 1px solid rgba(245,196,81,.15);
+}
+
+.hero-track {
+    display: flex;
+    width: max-content;
+    animation: heroScroll 55s linear infinite;
+    will-change: transform;
+}
+
+.hero-set {
+    display: flex;
+    gap: 14px;
+    padding-right: 14px;
+    flex-shrink: 0;
+}
+
+.hero-photo {
+    width: 190px;
+    height: 110px;
+    flex: 0 0 190px;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid #30394d;
+    background: #111726;
+    box-shadow: 0 8px 25px rgba(0,0,0,.35);
+}
+
+.hero-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform .35s ease;
+}
+
+.hero-photo:hover img {
+    transform: scale(1.08);
+}
+
+.hero-marquee:hover .hero-track {
+    animation-play-state: paused;
+}
+
+@keyframes heroScroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-track {
+        animation-duration: 42s;
+    }
+
+    .hero-set {
+        gap: 9px;
+        padding-right: 9px;
+    }
+
+    .hero-photo {
+        width: 130px;
+        height: 78px;
+        flex-basis: 130px;
+        border-radius: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-track {
+        animation: none;
+    }
+}
+
 </style>
 </head>
 
@@ -1522,6 +1614,62 @@ footer {
 
 <div class="container">
 
+
+
+
+
+<!-- =====================================================
+     HERO PHOTO MARQUEE - 20 FOTO, BERGERAK KANAN -> KIRI
+===================================================== -->
+<section class="hero-marquee" aria-label="20 foto hero">
+    <div class="hero-track">
+        <div class="hero-set">
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=500&q=80" alt="Hero 1" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=500&q=80" alt="Hero 2" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500&q=80" alt="Hero 3" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=500&q=80" alt="Hero 4" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=500&q=80" alt="Hero 5" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=500&q=80" alt="Hero 6" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1542751371-7f4f8e5c6f8d?auto=format&fit=crop&w=500&q=80" alt="Hero 7" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=500&q=80" alt="Hero 8" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=500&q=80" alt="Hero 9" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=500&q=80" alt="Hero 10" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=500&q=80" alt="Hero 11" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=500&q=80" alt="Hero 12" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=500&q=80" alt="Hero 13" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=500&q=80" alt="Hero 14" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&w=500&q=80" alt="Hero 15" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=500&q=80" alt="Hero 16" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=80" alt="Hero 17" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=80" alt="Hero 18" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=500&q=80" alt="Hero 19" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1518659526054-70f1f4b7d7f0?auto=format&fit=crop&w=500&q=80" alt="Hero 20" loading="lazy"></div>
+        </div>
+        <!-- Duplikasi set agar animasi berjalan mulus tanpa jeda -->
+        <div class="hero-set" aria-hidden="true">
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1542751371-7f4f8e5c6f8d?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+            <div class="hero-photo"><img src="https://images.unsplash.com/photo-1518659526054-70f1f4b7d7f0?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy"></div>
+        </div>
+    </div>
+</section>
 
 <!-- =====================================================
      HEADER
