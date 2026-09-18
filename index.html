@@ -1604,6 +1604,153 @@ footer {
     .hero-track {
         animation: none;
     }
+/* =====================================================
+   TOP MVP
+===================================================== */
+
+.mvp-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.mvp-title h2 {
+    font-size: 28px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.mvp-title p {
+    color: #69748a;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.mvp-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.mvp-card {
+    display: grid;
+    grid-template-columns: 45px 1fr auto;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px;
+
+    background: #111726;
+
+    border: 1px solid #252d42;
+    border-radius: 13px;
+
+    transition: .2s;
+}
+
+.mvp-card:hover {
+    border-color: #f5c451;
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.25);
+}
+
+.mvp-rank {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f5c451,
+            #b97917
+        );
+
+    color: #111;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.mvp-info {
+    min-width: 0;
+}
+
+.mvp-player-name {
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.mvp-team {
+    color: #f5c451;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    margin-top: 4px;
+}
+
+.mvp-role {
+    color: #69748a;
+
+    font-size: 9px;
+
+    margin-top: 3px;
+
+    text-transform: uppercase;
+    letter-spacing: .7px;
+}
+
+.mvp-badge {
+    padding: 7px 9px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(245,196,81,.08);
+
+    border:
+        1px solid rgba(245,196,81,.20);
+
+    color: #f5c451;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+@media(max-width: 700px) {
+
+    .mvp-list {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width: 400px) {
+
+    .mvp-card {
+        grid-template-columns: 38px 1fr;
+    }
+
+    .mvp-rank {
+        width: 34px;
+        height: 34px;
+    }
+
+    .mvp-badge {
+        display: none;
+    }
+
 }
 
 </style>
@@ -4656,6 +4803,1514 @@ footer {
 </div>
 
 </section>
+
+
+<!-- =====================================================
+     TOP MVP BUTTON
+===================================================== -->
+
+<div class="section-toggle">
+
+    <button
+        class="toggle-btn"
+        onclick="toggleSection('mvpStage','mvpArrow')"
+    >
+
+        <span class="icon">
+            👑
+        </span>
+
+        <span>
+            TOP MVP
+        </span>
+
+        <span
+            class="arrow"
+            id="mvpArrow"
+        >
+            ▼
+        </span>
+
+    </button>
+	<!-- =====================================================
+     TOP MVP
+===================================================== -->
+
+<section
+    id="mvpStage"
+    class="collapsible"
+>
+
+    <div class="mvp-title">
+
+        <h2>
+            TOP MVP
+        </h2>
+
+        <p>
+            50 Players • All Teams
+        </p>
+
+    </div>
+
+
+    <div class="mvp-list">
+
+
+        <!-- 01 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">01</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Yoga
+                </div>
+
+                <div class="mvp-team">
+                    7DeadlySins Esport
+                </div>
+
+                <div class="mvp-role">
+                    Captain • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 02 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">02</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Ridwan
+                </div>
+
+                <div class="mvp-team">
+                    7DeadlySins Esport
+                </div>
+
+                <div class="mvp-role">
+                    Jungler • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 03 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">03</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Anang
+                </div>
+
+                <div class="mvp-team">
+                    7DeadlySins Esport
+                </div>
+
+                <div class="mvp-role">
+                    Gold Lane • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 04 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">04</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Juan
+                </div>
+
+                <div class="mvp-team">
+                    7DeadlySins Esport
+                </div>
+
+                <div class="mvp-role">
+                    EXP Lane • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 05 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">05</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Gumelar
+                </div>
+
+                <div class="mvp-team">
+                    7DeadlySins Esport
+                </div>
+
+                <div class="mvp-role">
+                    Roamer • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 06 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">06</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Rizky pra
+                </div>
+
+                <div class="mvp-team">
+                    BOTUNA
+                </div>
+
+                <div class="mvp-role">
+                    Captain • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 07 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">07</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Apri
+                </div>
+
+                <div class="mvp-team">
+                    BOTUNA
+                </div>
+
+                <div class="mvp-role">
+                    Jungler • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 08 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">08</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Kiran
+                </div>
+
+                <div class="mvp-team">
+                    BOTUNA
+                </div>
+
+                <div class="mvp-role">
+                    Gold Lane • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 09 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">09</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Jonathan
+                </div>
+
+                <div class="mvp-team">
+                    BOTUNA
+                </div>
+
+                <div class="mvp-role">
+                    EXP Lane • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 10 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">10</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Mulya
+                </div>
+
+                <div class="mvp-team">
+                    BOTUNA
+                </div>
+
+                <div class="mvp-role">
+                    Roamer • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 11 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">11</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Agung TP
+                </div>
+
+                <div class="mvp-team">
+                    Genocide Esport
+                </div>
+
+                <div class="mvp-role">
+                    Captain • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 12 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">12</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Dermawan
+                </div>
+
+                <div class="mvp-team">
+                    Genocide Esport
+                </div>
+
+                <div class="mvp-role">
+                    Jungler • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 13 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">13</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Etanim
+                </div>
+
+                <div class="mvp-team">
+                    Genocide Esport
+                </div>
+
+                <div class="mvp-role">
+                    Gold Lane • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 14 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">14</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Dandi
+                </div>
+
+                <div class="mvp-team">
+                    Genocide Esport
+                </div>
+
+                <div class="mvp-role">
+                    EXP Lane • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 15 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">15</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Rehan
+                </div>
+
+                <div class="mvp-team">
+                    Genocide Esport
+                </div>
+
+                <div class="mvp-role">
+                    Roamer • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 16 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">16</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Azis
+                </div>
+
+                <div class="mvp-team">
+                    EL J3MB4Y ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Captain • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 17 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">17</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Ryan
+                </div>
+
+                <div class="mvp-team">
+                    EL J3MB4Y ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Jungler • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 18 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">18</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    A fikri
+                </div>
+
+                <div class="mvp-team">
+                    EL J3MB4Y ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Gold Lane • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 19 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">19</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Bagus tp
+                </div>
+
+                <div class="mvp-team">
+                    EL J3MB4Y ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    EXP Lane • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 20 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">20</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Ricky
+                </div>
+
+                <div class="mvp-team">
+                    EL J3MB4Y ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Roamer • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 21 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">21</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Mico
+                </div>
+
+                <div class="mvp-team">
+                    PPF (PARA PENCARI FREEBET)
+                </div>
+
+                <div class="mvp-role">
+                    Captain • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 22 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">22</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Panca
+                </div>
+
+                <div class="mvp-team">
+                    PPF (PARA PENCARI FREEBET)
+                </div>
+
+                <div class="mvp-role">
+                    Jungler • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 23 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">23</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Rizky
+                </div>
+
+                <div class="mvp-team">
+                    PPF (PARA PENCARI FREEBET)
+                </div>
+
+                <div class="mvp-role">
+                    Gold Lane • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 24 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">24</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Rampart
+                </div>
+
+                <div class="mvp-team">
+                    PPF (PARA PENCARI FREEBET)
+                </div>
+
+                <div class="mvp-role">
+                    EXP Lane • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 25 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">25</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    King jall
+                </div>
+
+                <div class="mvp-team">
+                    PPF (PARA PENCARI FREEBET)
+                </div>
+
+                <div class="mvp-role">
+                    Roamer • GROUP A
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 26 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">26</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Silvana
+                </div>
+
+                <div class="mvp-team">
+                    RIBAK SUDE ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Captain • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 27 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">27</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Sawal
+                </div>
+
+                <div class="mvp-team">
+                    RIBAK SUDE ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Jungler • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 28 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">28</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Arwin
+                </div>
+
+                <div class="mvp-team">
+                    RIBAK SUDE ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Gold Lane • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 29 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">29</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Edy
+                </div>
+
+                <div class="mvp-team">
+                    RIBAK SUDE ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    EXP Lane • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 30 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">30</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Dion
+                </div>
+
+                <div class="mvp-team">
+                    RIBAK SUDE ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Roamer • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 31 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">31</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Bolen
+                </div>
+
+                <div class="mvp-team">
+                    N1C3 ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Captain • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 32 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">32</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Raffi
+                </div>
+
+                <div class="mvp-team">
+                    N1C3 ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Jungler • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 33 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">33</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Putri
+                </div>
+
+                <div class="mvp-team">
+                    N1C3 ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Gold Lane • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 34 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">34</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Ardi
+                </div>
+
+                <div class="mvp-team">
+                    N1C3 ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    EXP Lane • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 35 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">35</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Andra
+                </div>
+
+                <div class="mvp-team">
+                    N1C3 ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Roamer • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 36 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">36</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Randi MR
+                </div>
+
+                <div class="mvp-team">
+                    PRIA IDAMAN
+                </div>
+
+                <div class="mvp-role">
+                    Captain • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 37 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">37</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Adelin
+                </div>
+
+                <div class="mvp-team">
+                    PRIA IDAMAN
+                </div>
+
+                <div class="mvp-role">
+                    Jungler • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 38 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">38</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Hengky
+                </div>
+
+                <div class="mvp-team">
+                    PRIA IDAMAN
+                </div>
+
+                <div class="mvp-role">
+                    Gold Lane • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 39 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">39</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Gerry
+                </div>
+
+                <div class="mvp-team">
+                    PRIA IDAMAN
+                </div>
+
+                <div class="mvp-role">
+                    EXP Lane • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 40 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">40</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Tiyas
+                </div>
+
+                <div class="mvp-team">
+                    PRIA IDAMAN
+                </div>
+
+                <div class="mvp-role">
+                    Roamer • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 41 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">41</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Yope
+                </div>
+
+                <div class="mvp-team">
+                    /A ESPORTT
+                </div>
+
+                <div class="mvp-role">
+                    Captain • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 42 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">42</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Kingall
+                </div>
+
+                <div class="mvp-team">
+                    /A ESPORTT
+                </div>
+
+                <div class="mvp-role">
+                    Jungler • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 43 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">43</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Saswin
+                </div>
+
+                <div class="mvp-team">
+                    /A ESPORTT
+                </div>
+
+                <div class="mvp-role">
+                    Gold Lane • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 44 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">44</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Sandy p
+                </div>
+
+                <div class="mvp-team">
+                    /A ESPORTT
+                </div>
+
+                <div class="mvp-role">
+                    EXP Lane • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 45 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">45</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Irfan
+                </div>
+
+                <div class="mvp-team">
+                    /A ESPORTT
+                </div>
+
+                <div class="mvp-role">
+                    Roamer • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 46 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">46</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Ilham
+                </div>
+
+                <div class="mvp-team">
+                    ABC ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Captain • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 47 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">47</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Frans
+                </div>
+
+                <div class="mvp-team">
+                    ABC ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Jungler • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 48 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">48</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Nelson
+                </div>
+
+                <div class="mvp-team">
+                    ABC ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Gold Lane • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 49 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">49</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Hasan
+                </div>
+
+                <div class="mvp-team">
+                    ABC ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    EXP Lane • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+        <!-- 50 -->
+
+        <div class="mvp-card">
+
+            <div class="mvp-rank">50</div>
+
+            <div class="mvp-info">
+
+                <div class="mvp-player-name">
+                    Agus ps
+                </div>
+
+                <div class="mvp-team">
+                    ABC ESPORT
+                </div>
+
+                <div class="mvp-role">
+                    Roamer • GROUP B
+                </div>
+
+            </div>
+
+            <div class="mvp-badge">
+                MVP
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
 
 
 <!-- =====================================================
