@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -392,7 +393,7 @@ body {
 
 
 /* =====================================================
-   PLAYOFF
+   PLAYOFF BRACKET - DOUBLE ELIMINATION
 ===================================================== */
 
 .playoff-content {
@@ -400,255 +401,300 @@ body {
 }
 
 .playoff-title {
-
     text-align: center;
-
     margin-bottom: 55px;
 }
 
 .playoff-title h2 {
-
     font-size: 28px;
-
     letter-spacing: 2px;
 }
 
 .playoff-title p {
-
     color: #69748a;
-
     margin-top: 7px;
-
     font-size: 13px;
+}
+
+/* Wrapper agar bracket bisa di-scroll di layar kecil */
+.bracket-wrap {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 15px 10px 35px;
+    scrollbar-width: thin;
 }
 
 .bracket {
-
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        80px
-        1fr
-        80px
-        1fr;
-
-    align-items: center;
-
-    max-width: 1250px;
-
-    margin: auto;
-}
-
-.round {
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: space-around;
-
-    height: 470px;
-
     position: relative;
-
-    gap: 35px;
+    width: 1120px;
+    height: 620px;
+    margin: 0 auto;
 }
 
-.round-title {
+/* =========================
+   MATCH CARD
+========================= */
 
+.bracket .br-match {
     position: absolute;
-
-    top: -35px;
-
-    left: 0;
-    right: 0;
-
-    text-align: center;
-
-    color: #69748a;
-
-    font-size: 11px;
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
+    width: 190px;
+    z-index: 3;
 }
 
-.match {
-
-    background: #111726;
-
-    border: 1px solid #293249;
-
-    border-radius: 12px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.25);
-
-    transition: .2s;
-}
-
-.match:hover {
-
-    border-color: #f5c451;
-
-    transform:
-        translateY(-2px);
-}
-
-.match-title {
-
-    background: #181f31;
-
-    padding: 8px 12px;
-
-    color: #68738a;
-
-    font-size: 10px;
-
-    text-transform: uppercase;
-
-    font-weight: bold;
-
-    letter-spacing: 1px;
-}
-
-.player {
-
+.bracket .br-match-title {
+    height: 25px;
     display: flex;
-
     align-items: center;
-
-    justify-content: space-between;
-
-    padding: 13px;
-
-    border-top:
-        1px solid #252d40;
+    color: #69748a;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    white-space: nowrap;
 }
 
-.player span:first-child {
-
-    color: #d9deea;
-
-    font-size: 13px;
-
-    font-weight: bold;
+.bracket .br-team {
+    height: 43px;
+    display: grid;
+    grid-template-columns: 43px 1fr 30px;
+    align-items: center;
+    background: #111726;
+    border: 1px solid #293249;
+    overflow: hidden;
 }
 
-.score {
+.bracket .br-team + .br-team {
+    border-top: 0;
+}
 
+.bracket .br-logo {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #080c15;
     color: #f5c451;
-
-    font-size: 16px;
-
+    font-size: 10px;
     font-weight: 900;
 }
 
-.connector {
-
-    height: 2px;
-
-    background: #323b52;
-
-    position: relative;
+.bracket .br-name {
+    min-width: 0;
+    padding: 0 8px;
+    color: #e0e5ef;
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.connector::after {
-
-    content: "";
-
-    position: absolute;
-
-    right: -1px;
-
-    top: -4px;
-
-    width: 10px;
-
-    height: 10px;
-
-    border-top:
-        2px solid #323b52;
-
-    border-right:
-        2px solid #323b52;
-
-    transform:
-        rotate(45deg);
-}
-
-.final {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
-.final-box {
-
-    width: 100%;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(245,196,81,.13),
-            #111726
-        );
-
-    border:
-        1px solid #f5c451;
-
-    border-radius: 18px;
-
-    padding: 28px 15px;
-
-    text-align: center;
-
-    box-shadow:
-        0 0 40px rgba(245,196,81,.08);
-}
-
-.trophy {
-
-    font-size: 44px;
-
-    margin-bottom: 10px;
-}
-
-.final-box h3 {
-
+.bracket .br-score {
     color: #f5c451;
-
-    font-size: 13px;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 18px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 900;
 }
 
-.champion {
+/* =========================
+   POSITION
+========================= */
 
-    padding: 18px 10px;
+.br-m1 { left: 0;   top: 20px;  }
+.br-m2 { left: 0;   top: 160px; }
 
-    border-radius: 12px;
+.br-m3 { left: 275px; top: 20px; }
+.br-m4 { left: 275px; top: 160px; }
 
-    background:
-        rgba(245,196,81,.08);
+.br-m5 { left: 275px; top: 400px; }
 
-    border:
-        1px dashed #7e6630;
+.br-m6 { left: 555px; top: 90px; }
+.br-m7 { left: 555px; top: 400px; }
 
-    color: #777f90;
+.br-m8 { left: 875px; top: 245px; }
 
-    font-weight: bold;
+/* =========================
+   LABEL
+========================= */
+
+.bracket .br-label {
+    position: absolute;
+    z-index: 2;
+    width: 190px;
+    text-align: center;
+    color: #6e9da0;
+    font-size: 10px;
+    font-weight: 900;
+    line-height: 1.35;
+    letter-spacing: .4px;
 }
 
+.bracket .br-label span {
+    display: block;
+    color: #d85a5a;
+}
+
+.br-label-upper { left: 555px; top: 20px; }
+.br-label-lower { left: 555px; top: 330px; }
+
+.br-label-grand {
+    left: 875px;
+    top: 195px;
+    color: #f5c451 !important;
+    font-size: 15px !important;
+    letter-spacing: 1.5px !important;
+}
+
+/* =========================
+   CONNECTOR LINES
+========================= */
+
+.bracket .br-line {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* M1 -> M3 */
+.br-line-1 {
+    left: 190px;
+    top: 51px;
+    width: 85px;
+    height: 96px;
+    border-top: 1px solid #596277;
+    border-right: 1px solid #596277;
+    border-bottom: 1px solid #596277;
+}
+
+.br-line-1::after {
+    content: "";
+    position: absolute;
+    right: -45px;
+    top: 47px;
+    width: 45px;
+    border-top: 1px solid #596277;
+}
+
+/* M2 -> M4 */
+.br-line-2 {
+    left: 190px;
+    top: 191px;
+    width: 85px;
+    height: 96px;
+    border-top: 1px solid #596277;
+    border-right: 1px solid #596277;
+    border-bottom: 1px solid #596277;
+}
+
+.br-line-2::after {
+    content: "";
+    position: absolute;
+    right: -45px;
+    top: 47px;
+    width: 45px;
+    border-top: 1px solid #596277;
+}
+
+/* M3 + M4 -> M6 */
+.br-line-upper {
+    left: 465px;
+    top: 51px;
+    width: 90px;
+    height: 227px;
+    border-right: 1px solid #596277;
+}
+
+.br-line-upper::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1px;
+    width: 45px;
+    border-top: 1px solid #596277;
+}
+
+.br-line-upper::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 45px;
+    border-top: 1px solid #596277;
+}
+
+/* M5 -> M7 */
+.br-line-lower {
+    left: 465px;
+    top: 421px;
+    width: 90px;
+    height: 0;
+    border-top: 1px solid #596277;
+}
+
+/* M6 + M7 -> M8 */
+.br-line-final {
+    left: 745px;
+    top: 121px;
+    width: 130px;
+    height: 323px;
+    border-right: 1px solid #596277;
+}
+
+.br-line-final::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    border-top: 1px solid #596277;
+}
+
+.br-line-final::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    border-top: 1px solid #596277;
+}
+
+/* Garis masuk ke Grand Final */
+.br-line-grand {
+    left: 875px;
+    top: 288px;
+    width: 0;
+    height: 0;
+    border-top: 1px solid #596277;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+    .bracket-wrap {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .bracket {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .playoff-title {
+        margin-bottom: 25px;
+    }
+
+    .playoff-title h2 {
+        font-size: 23px;
+    }
+}
 
 /* =====================================================
    SCHEDULE
@@ -2487,7 +2533,7 @@ footer {
 
 
 <!-- =====================================================
-     PLAYOFF
+     PLAYOFF - DOUBLE ELIMINATION BRACKET
 ===================================================== -->
 
 <section
@@ -2497,171 +2543,228 @@ footer {
 
 <div class="playoff-content">
 
-<div class="playoff-title">
-
-    <h2>PLAYOFF BRACKET</h2>
-
-    <p>
-        Top 2 teams from each group advance
-    </p>
-
-</div>
-
-
-<div class="bracket">
-
-
-<div class="round">
-
-    <div class="round-title">
+    <div class="playoff-title">
+        <h2>PLAYOFF BRACKET</h2>
+        <p>Double Elimination • Best of 5 / Best of 7</p>
     </div>
 
-    <div class="match">
+    <div class="bracket-wrap">
 
-        <div class="match-title">
-            MATCH 01 UPPER BRACKET BO 5
-        </div>
+        <div class="bracket">
 
-        <div class="player">
+            <!-- ================= M1 ================= -->
 
-            <span>
-                Group A #1
-            </span>
+            <div class="br-match br-m1">
 
-            <span class="score">
-                —
-            </span>
+                <div class="br-match-title">
+                    M1 - BO5 &nbsp;&nbsp; 29 OKT 2025
+                </div>
 
-        </div>
+                <div class="br-team">
+                    <div class="br-logo">A1</div>
+                    <div class="br-name">7DeadlySins Esport</div>
+                    <div class="br-score">0</div>
+                </div>
 
-        <div class="player">
+                <div class="br-team">
+                    <div class="br-logo">B2</div>
+                    <div class="br-name">N1C3 ESPORT</div>
+                    <div class="br-score">0</div>
+                </div>
 
-            <span>
-                Group B #1
-            </span>
+            </div>
 
-            <span class="score">
-                —
-            </span>
+
+            <!-- ================= M2 ================= -->
+
+            <div class="br-match br-m2">
+
+                <div class="br-match-title">
+                    M2 - BO5 &nbsp;&nbsp; 29 OKT 2025
+                </div>
+
+                <div class="br-team">
+                    <div class="br-logo">B1</div>
+                    <div class="br-name">RIBAK SUDE ESPORT</div>
+                    <div class="br-score">0</div>
+                </div>
+
+                <div class="br-team">
+                    <div class="br-logo">A2</div>
+                    <div class="br-name">BOTUNA</div>
+                    <div class="br-score">0</div>
+                </div>
+
+            </div>
+
+
+            <!-- ================= M3 ================= -->
+
+            <div class="br-match br-m3">
+
+                <div class="br-match-title">
+                    M3 - BO5 &nbsp;&nbsp; 30 OKT 2025
+                </div>
+
+                <div class="br-team">
+                    <div class="br-logo">W</div>
+                    <div class="br-name">WINNER M1</div>
+                    <div class="br-score">0</div>
+                </div>
+
+                <div class="br-team">
+                    <div class="br-logo">TBD</div>
+                    <div class="br-name">TBD</div>
+                    <div class="br-score">0</div>
+                </div>
+
+            </div>
+
+
+            <!-- ================= M4 ================= -->
+
+            <div class="br-match br-m4">
+
+                <div class="br-match-title">
+                    M4 - BO5 &nbsp;&nbsp; 30 OKT 2025
+                </div>
+
+                <div class="br-team">
+                    <div class="br-logo">TBD</div>
+                    <div class="br-name">TBD</div>
+                    <div class="br-score">0</div>
+                </div>
+
+                <div class="br-team">
+                    <div class="br-logo">W</div>
+                    <div class="br-name">WINNER M2</div>
+                    <div class="br-score">0</div>
+                </div>
+
+            </div>
+
+
+            <!-- ================= M5 ================= -->
+
+            <div class="br-match br-m5">
+
+                <div class="br-match-title">
+                    M5 - BO5 &nbsp;&nbsp; 31 OKT 2025
+                </div>
+
+                <div class="br-team">
+                    <div class="br-logo">L</div>
+                    <div class="br-name">LOSER M3</div>
+                    <div class="br-score">0</div>
+                </div>
+
+                <div class="br-team">
+                    <div class="br-logo">L</div>
+                    <div class="br-name">LOSER M4</div>
+                    <div class="br-score">0</div>
+                </div>
+
+            </div>
+
+
+            <!-- ================= M6 ================= -->
+
+            <div class="br-match br-m6">
+
+                <div class="br-match-title">
+                    M6 - BO5 &nbsp;&nbsp; 31 OKT 2025
+                </div>
+
+                <div class="br-team">
+                    <div class="br-logo">W</div>
+                    <div class="br-name">WINNER M3</div>
+                    <div class="br-score">0</div>
+                </div>
+
+                <div class="br-team">
+                    <div class="br-logo">W</div>
+                    <div class="br-name">WINNER M4</div>
+                    <div class="br-score">0</div>
+                </div>
+
+            </div>
+
+
+            <!-- ================= M7 ================= -->
+
+            <div class="br-match br-m7">
+
+                <div class="br-match-title">
+                    M7 - BO7 &nbsp;&nbsp; 1 NOV 2025
+                </div>
+
+                <div class="br-team">
+                    <div class="br-logo">L</div>
+                    <div class="br-name">LOSER M6</div>
+                    <div class="br-score">0</div>
+                </div>
+
+                <div class="br-team">
+                    <div class="br-logo">W</div>
+                    <div class="br-name">WINNER M5</div>
+                    <div class="br-score">0</div>
+                </div>
+
+            </div>
+
+
+            <!-- ================= M8 / GRAND FINAL ================= -->
+
+            <div class="br-match br-m8">
+
+                <div class="br-match-title">
+                    M8 - BO7 &nbsp;&nbsp; 2 NOV 2025
+                </div>
+
+                <div class="br-team">
+                    <div class="br-logo">W</div>
+                    <div class="br-name">WINNER M6</div>
+                    <div class="br-score">0</div>
+                </div>
+
+                <div class="br-team">
+                    <div class="br-logo">W</div>
+                    <div class="br-name">WINNER M7</div>
+                    <div class="br-score">0</div>
+                </div>
+
+            </div>
+
+
+            <!-- ================= LABELS ================= -->
+
+            <div class="br-label br-label-upper">
+                WINNER
+                <span>QUALIFIED TO<br>FINAL UPPER BRACKET</span>
+            </div>
+
+            <div class="br-label br-label-lower">
+                WINNER
+                <span>QUALIFIED TO<br>FINAL LOWER BRACKET</span>
+            </div>
+
+            <div class="br-label br-label-grand">
+                GRAND FINALS
+            </div>
+
+
+            <!-- ================= CONNECTORS ================= -->
+
+            <div class="br-line br-line-1"></div>
+            <div class="br-line br-line-2"></div>
+            <div class="br-line br-line-upper"></div>
+            <div class="br-line br-line-lower"></div>
+            <div class="br-line br-line-final"></div>
+            <div class="br-line br-line-grand"></div>
 
         </div>
 
     </div>
-
-
-    <div class="match">
-
-        <div class="match-title">
-            MATCH 02 PLAYOFF / LOWER BRACKET BO 5
-        </div>
-
-        <div class="player">
-
-            <span>
-                Group B #2
-            </span>
-
-            <span class="score">
-                —
-            </span>
-
-        </div>
-
-        <div class="player">
-
-            <span>
-                Group A #2
-            </span>
-
-            <span class="score">
-                —
-            </span>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<div class="round">
-
-    <div class="connector"></div>
-
-    <div class="connector"></div>
-
-</div>
-
-
-<div class="round">
-
-    <div class="round-title">
-        GRAND FINAL
-    </div>
-
-    <div class="match">
-
-        <div class="match-title">
-            SEMIFINAL
-        </div>
-
-        <div class="player">
-
-            <span>
-                LOSER MATCH 1
-            </span>
-
-            <span class="score">
-                —
-            </span>
-
-        </div>
-
-        <div class="player">
-
-            <span>
-                WINNER MATCH 2
-            </span>
-
-            <span class="score">
-                —
-            </span>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<div class="round">
-
-    <div class="connector"></div>
-
-</div>
-
-
-<div class="final">
-
-    <div class="final-box">
-
-        <div class="trophy">
-            🏆
-        </div>
-
-        <h3>
-            CHAMPION BO 7
-        </h3>
-
-        <div class="champion">
-            WINNER MATCH 01 VS WINNER SEMIFINAL 
-        </div>
-
-    </div>
-
-</div>
-
-</div>
 
 </div>
 
