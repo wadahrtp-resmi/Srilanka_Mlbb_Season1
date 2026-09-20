@@ -31,6 +31,116 @@ body {
     max-width: 1400px;
     margin: auto;
 }
+/* =========================
+   LOADING SCREEN
+========================= */
+#loader {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#loader.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-content {
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.loader-logo {
+    display: block;
+    width: 220px;
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto 25px;
+}
+
+.loader-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto 20px;
+}
+
+.loader-progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        #00ff88,
+        #00d9ff
+    );
+    border-radius: 10px;
+    transition: width 0.15s ease;
+}
+
+.loader-text {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.loader-text span {
+    display: inline-block;
+    animation: loaderBounce 1.2s infinite ease-in-out;
+}
+
+/* Animasi tiap huruf */
+.loader-text span:nth-child(1) { animation-delay: 0s; }
+.loader-text span:nth-child(2) { animation-delay: 0.1s; }
+.loader-text span:nth-child(3) { animation-delay: 0.2s; }
+.loader-text span:nth-child(4) { animation-delay: 0.3s; }
+.loader-text span:nth-child(5) { animation-delay: 0.4s; }
+.loader-text span:nth-child(6) { animation-delay: 0.5s; }
+.loader-text span:nth-child(7) { animation-delay: 0.6s; }
+.loader-text span:nth-child(8) { animation-delay: 0.7s; }
+.loader-text span:nth-child(9) { animation-delay: 0.8s; }
+.loader-text span:nth-child(10) { animation-delay: 0.9s; }
+
+@keyframes loaderBounce {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+
+    30% {
+        transform: translateY(-8px);
+        opacity: 1;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .loader-logo {
+        width: 180px;
+    }
+
+    .loader-content {
+        width: 85%;
+    }
+
+    .loader-text {
+        font-size: 15px;
+        letter-spacing: 3px;
+    }
+}
 
 
 /* =====================================================
@@ -5879,6 +5989,42 @@ footer {
 <!-- =====================================================
      JAVASCRIPT
 ===================================================== -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const loader = document.getElementById("loader");
+    const progress = document.querySelector(".loader-progress");
+
+    if (!loader || !progress) return;
+
+    let percent = 0;
+
+    const loading = setInterval(function () {
+
+        percent += Math.floor(Math.random() * 8) + 2;
+
+        if (percent >= 100) {
+            percent = 100;
+            progress.style.width = percent + "%";
+
+            clearInterval(loading);
+
+            setTimeout(function () {
+                loader.classList.add("loader-hidden");
+
+                setTimeout(function () {
+                    loader.style.display = "none";
+                }, 700);
+
+            }, 300);
+        } else {
+            progress.style.width = percent + "%";
+        }
+
+    }, 100);
+
+});
+</script>
 
 <script>
 
