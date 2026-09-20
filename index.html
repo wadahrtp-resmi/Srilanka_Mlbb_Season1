@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -260,7 +262,7 @@ body {
     display: grid;
 
     grid-template-columns:
-        40px 1fr 45px 45px 45px 60px;
+        40px 1fr 55px 60px;
 
     align-items: center;
 
@@ -1850,7 +1852,11 @@ footer {
     .team {
 
         grid-template-columns:
-            30px 1fr 34px 34px 34px 42px;
+            30px 1fr 40px;
+    }
+
+    .team .stat:last-child {
+        display: none;
     }
 
     .team-info {
@@ -2007,282 +2013,13 @@ footer {
     }
 }
 
-
-
-/* =====================================================
-   WADAH4D LOADING SCREEN - SMOOTH / MOBILE
-===================================================== */
-#loader {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #090909;
-    z-index: 999999;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transition: opacity .45s ease, visibility .45s ease;
-}
-
-#loader.hide-loader {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.loader-content {
-    text-align: center;
-    animation: loaderFadeIn .5s ease both;
-}
-
-.loader-logo {
-    display: block;
-    width: 280px;
-    max-width: 75vw;
-    height: auto;
-    user-select: none;
-    pointer-events: none;
-    animation: loaderFloat 2.2s ease-in-out infinite;
-}
-
-.loader-bar {
-    width: 230px;
-    max-width: 65vw;
-    height: 6px;
-    margin: 28px auto 16px;
-    background: #1d1d1d;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.loader-progress {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, #f5b400, #ffe082);
-    transform: translateX(-100%);
-    animation: loaderProgress .95s ease forwards;
-}
-
-.loader-text {
-    display: flex;
-    justify-content: center;
-    gap: 2px;
-    margin-top: 18px;
-}
-
-.loader-text span {
-    font-size: 18px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    background: linear-gradient(#fff7d0, #ffc107, #b87800);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: loaderBounce .9s infinite ease-in-out;
-}
-
-.loader-text span:nth-child(2) { animation-delay: .08s; }
-.loader-text span:nth-child(3) { animation-delay: .16s; }
-.loader-text span:nth-child(4) { animation-delay: .24s; }
-.loader-text span:nth-child(5) { animation-delay: .32s; }
-.loader-text span:nth-child(6) { animation-delay: .40s; }
-.loader-text span:nth-child(7) { animation-delay: .48s; }
-.loader-text span:nth-child(8) { animation-delay: .56s; }
-.loader-text span:nth-child(9) { animation-delay: .64s; }
-.loader-text span:nth-child(10) { animation-delay: .72s; }
-
-@keyframes loaderBounce {
-    0%, 100% { transform: translateY(0); opacity: .7; }
-    50% { transform: translateY(-4px); opacity: 1; }
-}
-
-@keyframes loaderProgress {
-    to { transform: translateX(0); }
-}
-
-@keyframes loaderFadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes loaderFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}
-
-@media (max-width: 768px) {
-    .loader-logo { width: 220px; }
-    .loader-bar { width: 190px; }
-    .loader-text span { font-size: 14px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    #loader, .loader-content, .loader-logo, .loader-progress, .loader-text span {
-        animation: none !important;
-    }
-}
-
 </style>
 </head>
 
 
 <body>
 
-<!-- =====================================================
-     LOADING SCREEN
-===================================================== -->
-<div id="loader" aria-label="Loading">
-    <div class="loader-content">
-        <img
-            alt="GRUP D"
-            class="loader-logo"
-            src="https://i.postimg.cc/k48ssVyZ/96f3ec37-0263-4522-a230-11c763082303-removebg-preview.png"
-        />
-
-        <div class="loader-bar">
-            <div class="loader-progress"></div>
-        </div>
-
-        <div class="loader-text" aria-hidden="true">
-            <span>S</span><span>R</span><span>I</span><span>L</span><span>A</span>
-            <span>N</span><span>K</span><span>A</span><span>.</span><span>.</span>
-        </div>
-    </div>
-</div>
-
 <div class="container">
-/*=============================
-     WADAH4D LOADER V3
-     FAST &#8226; SMOOTH &#8226; MOBILE
-==============================*/
-
-#loader{
-
-    position:fixed;
-    inset:0;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:#090909;
-
-    z-index:999999;
-
-    transition:
-    opacity .35s ease,
-    visibility .35s ease;
-
-}
-
-.loader-box{
-
-    text-align:center;
-
-    animation:fadeIn .5s ease;
-
-}
-
-.loader-logo{
-
-    width:280px;
-    max-width:75vw;
-
-    user-select:none;
-    pointer-events:none;
-
-    animation:floatLogo 2.2s ease-in-out infinite;
-
-}
-
-/* BAR */
-
-.loader-bar{
-
-    width:230px;
-    height:6px;
-
-    margin:28px auto 16px;
-
-    background:#1d1d1d;
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-}
-
-.loader-progress{
-
-    display:block;
-
-    width:100%;
-    height:100%;
-
-    background:linear-gradient(90deg,#f5b400,#ffe082);
-
-    transform:translateX(-100%);
-
-    animation:progress .85s ease forwards;
-
-}
-
-.loader-text{
-    display:flex;
-    justify-content:center;
-    gap:2px;
-    margin-top:18px;
-}
-
-.loader-text span{
-
-    font-size:18px;
-    font-weight:800;
-    letter-spacing:1px;
-
-    background:linear-gradient(#fff7d0,#ffc107,#b87800);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    text-shadow:
-        0 1px 0 rgba(255,255,255,.4),
-        0 2px 3px rgba(0,0,0,.35);
-
-    animation:bounce .9s infinite ease-in-out;
-}
-
-.loader-text span:nth-child(2){animation-delay:.08s;}
-.loader-text span:nth-child(3){animation-delay:.16s;}
-.loader-text span:nth-child(4){animation-delay:.24s;}
-.loader-text span:nth-child(5){animation-delay:.32s;}
-.loader-text span:nth-child(6){animation-delay:.40s;}
-.loader-text span:nth-child(7){animation-delay:.48s;}
-.loader-text span:nth-child(8){animation-delay:.56s;}
-.loader-text span:nth-child(9){animation-delay:.64s;}
-.loader-text span:nth-child(10){animation-delay:.72s;}
-
-@keyframes bounce{
-
-    0%,100%{
-        transform:translateY(0);
-        opacity:.7;
-    }
-
-    50%{
-        transform:translateY(-4px);
-        opacity:1;
-    }
-
-}
-
-.hide-loader{
-
-    opacity:0;
-    visibility:hidden;
-
-}
 
 
 
@@ -2386,17 +2123,7 @@ footer {
 
             <div class="stat">
                 <strong>0</strong>
-                M
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
                 W
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
-                L
             </div>
 
             <div class="stat">
@@ -2431,17 +2158,7 @@ footer {
 
             <div class="stat">
                 <strong>0</strong>
-                M
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
                 W
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
-                L
             </div>
 
             <div class="stat">
@@ -2475,17 +2192,7 @@ footer {
 
             <div class="stat">
                 <strong>0</strong>
-                M
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
                 W
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
-                L
             </div>
 
             <div class="stat">
@@ -2518,17 +2225,7 @@ footer {
 
             <div class="stat">
                 <strong>0</strong>
-                M
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
                 W
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
-                L
             </div>
 
             <div class="stat">
@@ -2561,17 +2258,7 @@ footer {
 
             <div class="stat">
                 <strong>0</strong>
-                M
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
                 W
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
-                L
             </div>
 
             <div class="stat">
@@ -2622,17 +2309,7 @@ footer {
 
             <div class="stat">
                 <strong>0</strong>
-                M
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
                 W
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
-                L
             </div>
 
             <div class="stat">
@@ -2665,17 +2342,7 @@ footer {
 
             <div class="stat">
                 <strong>0</strong>
-                M
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
                 W
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
-                L
             </div>
 
             <div class="stat">
@@ -2708,17 +2375,7 @@ footer {
 
             <div class="stat">
                 <strong>0</strong>
-                M
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
                 W
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
-                L
             </div>
 
             <div class="stat">
@@ -2751,17 +2408,7 @@ footer {
 
             <div class="stat">
                 <strong>0</strong>
-                M
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
                 W
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
-                L
             </div>
 
             <div class="stat">
@@ -2794,17 +2441,7 @@ footer {
 
             <div class="stat">
                 <strong>0</strong>
-                M
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
                 W
-            </div>
-
-            <div class="stat">
-                <strong>0</strong>
-                L
             </div>
 
             <div class="stat">
@@ -6175,48 +5812,6 @@ function toggleSection(sectionId, arrowId) {
 }
 
 </script>
-
-
-/* =====================================================
-   LOADING SCREEN CONTROL
-===================================================== */
-(function () {
-    const loader = document.getElementById("loader");
-    if (!loader) return;
-
-    const startTime = performance.now();
-    const minimumDisplayTime = 900;
-    let hidden = false;
-
-    document.documentElement.classList.add("loader-active");
-
-    function hideLoader() {
-        if (hidden) return;
-        hidden = true;
-
-        const elapsed = performance.now() - startTime;
-        const delay = Math.max(0, minimumDisplayTime - elapsed);
-
-        setTimeout(function () {
-            loader.classList.add("hide-loader");
-            document.documentElement.classList.remove("loader-active");
-
-            setTimeout(function () {
-                loader.remove();
-            }, 500);
-        }, delay);
-    }
-
-    if (document.readyState === "complete") {
-        hideLoader();
-    } else {
-        window.addEventListener("load", hideLoader, { once: true });
-    }
-
-    // Fallback agar loader tidak menggantung jika aset eksternal bermasalah.
-    setTimeout(hideLoader, 3500);
-})();
-
 
 </body>
 </html>
