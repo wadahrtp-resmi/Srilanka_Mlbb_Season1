@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -31,70 +32,6 @@ body {
     max-width: 1400px;
     margin: auto;
 }
-
-</script>
-<!-- Loading Screen -->
-<div id="loading-screen">
-    <img src="logo.png" alt="Logo" class="loading-logo">
-
-    <div class="loading-percent" id="loading-percent">0%</div>
-</div>
-
-<style>
-    #loading-screen {
-        position: fixed;
-        inset: 0;
-        z-index: 99999;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        background: #000;
-    }
-
-    .loading-logo {
-        width: 120px;
-        height: auto;
-        object-fit: contain;
-        margin-bottom: 20px;
-    }
-
-    .loading-percent {
-        color: #fff;
-        font-family: Arial, sans-serif;
-        font-size: 18px;
-        font-weight: 600;
-        letter-spacing: 1px;
-    }
-
-    #loading-screen.hide {
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-</style>
-
-<script>
-    let percent = 0;
-    const loadingPercent = document.getElementById("loading-percent");
-    const loadingScreen = document.getElementById("loading-screen");
-
-    const loading = setInterval(() => {
-        percent++;
-
-        loadingPercent.textContent = percent + "%";
-
-        if (percent >= 100) {
-            clearInterval(loading);
-
-            setTimeout(() => {
-                loadingScreen.classList.add("hide");
-            }, 300);
-        }
-    }, 30);
-</script>
 /* =========================
    LOADING SCREEN
 ========================= */
@@ -188,53 +125,6 @@ body {
         transform: translateY(-8px);
         opacity: 1;
     }
-}
-/*=============================
-          ANIMATION
-==============================*/
-
-@keyframes progress{
-
-    to{
-
-        transform:translateX(0);
-
-    }
-
-}
-
-@keyframes fadeIn{
-
-    from{
-
-        opacity:0;
-        transform:translateY(8px);
-
-    }
-
-    to{
-
-        opacity:1;
-        transform:translateY(0);
-
-    }
-
-}
-
-@keyframes floatLogo{
-
-    0%,100%{
-
-        transform:translateY(0);
-
-    }
-
-    50%{
-
-        transform:translateY(-5px);
-
-    }
-
 }
 
 /* Mobile */
