@@ -33,32 +33,68 @@ body {
 }
 
 </script>
- <!-- LOADING SCREEN -->
-<div id="loader">
-    <div class="loader-content">
+<!-- Loading Screen -->
+<div id="loading-screen">
+    <img src="logo.png" alt="Logo" class="loading-logo">
 
-        <img alt="WADAH4D" class="loader-logo" src="https://wadah4d01.com//images/logoweb.png" />
-
-        <div class="loader-bar">
-            <div class="loader-progress"></div>
-        </div>
-
-     <div class="loader-text">
-    <span>S</span>
-    <span>R</span>
-    <span>I</span>
-    <span>L</span>
-    <span>A</span>
-    <span>N</span>
-    <span>K</span>
-    <span>A</span>
-    <span>.</span>
-    <span>.</span>
+    <div class="loading-percent" id="loading-percent">0%</div>
 </div>
 
-    </div>
-</div>
-  <style>
+<style>
+    #loading-screen {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        background: #000;
+    }
+
+    .loading-logo {
+        width: 120px;
+        height: auto;
+        object-fit: contain;
+        margin-bottom: 20px;
+    }
+
+    .loading-percent {
+        color: #fff;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    #loading-screen.hide {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+</style>
+
+<script>
+    let percent = 0;
+    const loadingPercent = document.getElementById("loading-percent");
+    const loadingScreen = document.getElementById("loading-screen");
+
+    const loading = setInterval(() => {
+        percent++;
+
+        loadingPercent.textContent = percent + "%";
+
+        if (percent >= 100) {
+            clearInterval(loading);
+
+            setTimeout(() => {
+                loadingScreen.classList.add("hide");
+            }, 300);
+        }
+    }, 30);
+</script>
 /* =========================
    LOADING SCREEN
 ========================= */
