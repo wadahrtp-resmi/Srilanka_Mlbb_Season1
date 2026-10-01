@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -2161,30 +2162,24 @@ footer {
 }
 .center-image-panel {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
+    align-self: center;
     min-width: 0;
-    min-height: 300px;
     overflow: hidden;
-    isolation: isolate;
     border: none;
-    border-radius: 18px;
-    background:
-        radial-gradient(ellipse at 50% 30%, rgba(35,57,99,.75), transparent 65%),
-        linear-gradient(145deg, #151e32, #0c101b);
-    box-shadow: 0 12px 35px rgba(0,0,0,.32);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
 }
 .center-tournament-image {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
+    display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: contain;
-    padding: 4px;
+    padding: 0;
 }
 .center-image-hint {
+    display: none;
     position: relative;
     z-index: 0;
     display: flex;
@@ -2217,7 +2212,7 @@ footer {
     .center-image-panel {
         grid-column: 1 / -1;
         grid-row: 1;
-        min-height: 240px;
+        min-height: 0;
     }
     .nav-button-column {
         justify-content: flex-start;
@@ -2237,8 +2232,8 @@ footer {
         margin-bottom: 30px;
     }
     .center-image-panel {
-        min-height: 190px;
-        border-radius: 13px;
+        min-height: 0;
+        border-radius: 0;
     }
     .nav-button-column .toggle-btn {
         min-height: 58px;
