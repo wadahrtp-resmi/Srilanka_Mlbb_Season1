@@ -69,7 +69,8 @@ img{max-width:100%;display:block}
 .header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
 .header-row{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.3rem;letter-spacing:-.02em}
-.logo-img{height:38px;width:auto;display:block}
+.logo-mark{width:38px;height:38px;border-radius:12px;background:var(--grad);display:grid;place-items:center;color:#fff;font-weight:800;font-size:.95rem;box-shadow:0 6px 16px -6px rgba(14,165,233,.7)}
+.logo b{color:var(--sky-600)}
 .nav{display:flex;gap:4px}
 .nav a{padding:9px 14px;border-radius:999px;font-weight:600;font-size:.92rem;color:var(--ink-2);transition:.2s}
 .nav a:hover{background:var(--sky-50);color:var(--sky-700)}
@@ -90,13 +91,9 @@ img{max-width:100%;display:block}
 .mobile-nav a i{color:var(--sky-600)}
 
 /* ---------- Hero ---------- */
-.hero{position:relative;padding:56px 0 40px;background:linear-gradient(90deg,rgba(246,250,255,.94) 0%,rgba(246,250,255,.78) 38%,rgba(246,250,255,.05) 62%,rgba(246,250,255,0) 100%),url('https://i.imgur.com/DydwSxW.png') center right/cover no-repeat,var(--grad-soft);overflow:hidden}
-.sim-note{display:inline-flex;gap:8px;align-items:center;margin-top:16px;padding:8px 12px;border-radius:12px;background:rgba(255,246,229,.92);border:1px solid #fde3a7;color:#92400e;font-size:.78rem;font-weight:700}
-.card-web{display:flex;align-items:center;gap:8px;margin:12px 0 0;padding:9px 12px;border-radius:12px;background:var(--sky-50);font-size:.82rem;font-weight:600;color:var(--ink-2)}
-.card-web a{color:var(--sky-700);font-weight:800;word-break:break-all}
-.card-web a:hover{text-decoration:underline}
+.hero{position:relative;padding:56px 0 40px;background:var(--grad-soft);overflow:hidden}
 .hero::before{content:"";position:absolute;width:620px;height:620px;right:-180px;top:-260px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.28),transparent 65%);pointer-events:none}
-.hero::after{display:none;content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(14,165,233,.13) 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(180deg,#000 0%,transparent 75%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 75%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(14,165,233,.13) 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(180deg,#000 0%,transparent 75%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 75%);pointer-events:none}
 .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 8px;border-radius:999px;background:#fff;border:1px solid var(--line-2);font-size:.8rem;font-weight:700;color:var(--sky-700);box-shadow:var(--shadow-sm)}
 .eyebrow .dot{width:22px;height:22px;border-radius:50%;background:var(--sky-100);display:grid;place-items:center}
@@ -291,13 +288,12 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
 }
 @media (max-width:640px){
   .actions .btn-login{display:none}
-  .hero{padding:36px 0 30px;background:linear-gradient(180deg,rgba(246,250,255,.92) 0%,rgba(246,250,255,.7) 100%),url('https://i.imgur.com/DydwSxW.png') center/cover no-repeat}
+  .hero{padding:36px 0 30px}
   .spot{padding:20px;border-radius:24px}
   .spot-body{grid-template-columns:1fr;justify-items:center;text-align:center}
   .big-digits{justify-content:center}
   .grid{grid-template-columns:1fr}
   .slide{flex-direction:column;align-items:flex-start;padding:28px 24px 44px}
-  .logo-img{height:30px}
   .dots{left:24px}
   .two{grid-template-columns:1fr}
   .p2{grid-template-columns:repeat(5,1fr)}
@@ -311,7 +307,9 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
-</head>
+
+
+<meta name="twitter:title" content="Wadah4D - Prediksi Togel Akurat Hari Ini"><meta name="twitter:description" content="Prediksi togel harian Wadah4D, diperbarui otomatis setiap result pasaran."><meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_575nafv4va957vf0gcqskw48xw/92691f239cdfd2ec61944fc2552b78cd_1792861406907.png"><meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_575nafv4va957vf0gcqskw48xw/92691f239cdfd2ec61944fc2552b78cd_1792861406907.png"></head>
 <body>
 
 <div class="ticker" aria-label="Informasi berjalan">
@@ -322,7 +320,7 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
   <div class="wrap">
     <div class="header-row">
       <a href="#beranda" class="logo" aria-label="Wadah4D beranda">
-        <img class="logo-img" src="https://i.imgur.com/1zyQd3p.png" alt="Wadah4D" width="400" height="93">
+        <img class="logo-img" src="https://i.imgur.com/1zyQd3p.png" alt="Wadah4D" width="400" height="73">
       </a>
       <nav class="nav" aria-label="Navigasi utama">
         <a href="#beranda">Beranda</a>
@@ -355,7 +353,6 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
         <span class="eyebrow"><span class="dot"></span><span id="today-text">Prediksi aktif hari ini</span></span>
         <h1>Prediksi Togel<br><span class="accent">Wadah4D</span> Terpercaya</h1>
         <p class="lead">Wadah4D telah beroperasi sejak tahun 2015, menghadirkan prediksi harian yang diperbarui otomatis setiap result untuk pasaran-pasaran favorit Anda.</p>
-        <div class="sim-note"><i class="fa-solid fa-circle-info"></i> Ini hanyalah Prediksi, Selalu mengutamakan prediksi sendiri.</div>
         <div class="hero-cta">
           <a href="#pasaran" class="btn btn-primary">Lihat Prediksi <i class="fa-solid fa-arrow-right"></i></a>
           <button class="btn btn-outline" id="open-schedule"><i class="fa-regular fa-calendar"></i> Jadwal Lengkap</button>
@@ -386,7 +383,7 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
             <div class="ring-center"><div><div class="ring-time" id="spot-cd">00:00:00</div><div class="ring-phase" id="spot-phase">Tutup dalam</div></div></div>
           </div>
           <div class="spot-nums">
-            <div class="label">Angka Simulasi 4D</div>
+            <div class="label">Prediksi 4D</div>
             <div class="big-digits" id="spot-digits"></div>
             <div class="spot-mini">
               <div><small>BBFS</small><b id="spot-bbfs">-</b></div>
@@ -458,7 +455,7 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a href="#beranda" class="logo"><img class="logo-img" src="https://i.imgur.com/1zyQd3p.png" alt="Wadah4D" width="400" height="93"></a>
+         <a href="#beranda" class="logo"><img class="logo-img" src="https://i.imgur.com/1zyQd3p.png" alt="Wadah4D" width="400" height="93"></a>
         <p>Wadah4D adalah platform digital inovatif yang menjunjung tinggi akses mudah serta memberikan pengalaman terbaik setiap hari. Jika Anda mencari platform yang menawarkan lebih dari sekadar permainan, namun sebuah pengalaman komunitas, Wadah4D adalah tempatnya.</p>
       </div>
       <div>
@@ -487,10 +484,15 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
 </div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 
-<script>
+function jtBootHomePartial() {
+    var isLoggedIn = false;
+    var bootMarkets = [{"name":"SYDNEY","nameid":"SY","periode":"497","status":1,"web":"www.sydneypoolstoday.com","hari":" Setiap Hari","jam_tutup":"13:00 WIB","jam_result":"14:00 WIB","result":"6241","date":"25/10/2026"},{"name":"SINGAPORE","nameid":"SG","periode":"900","status":1,"web":"www.singaporepools.com.sg","hari":"Senin, Rabu, Kamis, Sabtu, Minggu","jam_tutup":"17:20 WIB","jam_result":"17:45 WIB","result":"1221","date":"25/10/2026"},{"name":"HONGKONG","nameid":"HK","periode":"136","status":1,"web":"www.hongkongpools.com","hari":"Setiap Hari","jam_tutup":"22:30 WIB","jam_result":"23:00 WIB","result":"5480","date":"25/10/2026"},{"name":"TOTO WUHAN","nameid":"TWH","periode":"020","status":1,"web":"www.totowuhan.com","hari":"Setiap Hari ( 09:00 | 12:00 | 15:00 | 18:00 | 21:00 | 00:00 )","jam_tutup":"Tiap 3 jam","jam_result":"Tiap 3 jam","result":"7464","date":"26/10/2026"},{"name":"HK SIANG","nameid":"HKD","periode":"952","status":1,"web":"www.hkpools1.com","hari":"Setiap Hari","jam_tutup":"10:30 WIB","jam_result":"11:00 WIB","result":"4027","date":"25/10/2026"},{"name":"MALAYSIA","nameid":"MY","periode":"135","status":1,"web":"www.malaysialottery.net","hari":"Setiap Hari","jam_tutup":"18:30 WIB","jam_result":"19:00 WIB","result":"8740","date":"25/10/2026"}];
 (function(){
   'use strict';
   var LINK = 'https://wadahbesar.com/';
+  var RESULTS = window.__RESULTS__||{};
+  function loadResults(){fetch('/api/results').then(function(r){return r.json()}).then(function(d){if(d&&d.results){RESULTS=d.results}}).catch(function(){})}
+  loadResults();setInterval(loadResults,60000);
 
   var MARKETS = [
     {id:'sydney',name:'SYDNEY',code:'SYD',close:'13:00',draw:'14:00',website:'https://www.sydneypoolstoday.com',openDays:'Setiap Hari'},
@@ -518,7 +520,7 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
   function toHHMM(sec){sec=((sec%86400)+86400)%86400;return pad(Math.floor(sec/3600))+':'+pad(Math.floor(sec%3600/60))}
   function fmtCd(t){t=Math.max(0,t);return pad(Math.floor(t/3600))+':'+pad(Math.floor(t%3600/60))+':'+pad(t%60)}
 
-  /* ---------- Simulasi hiburan per siklus jadwal result, bukan hasil resmi ---------- */
+  /* ---------- Generator prediksi (deterministik per siklus result) ---------- */
   function hashString(v){var h=1779033703^v.length;for(var i=0;i<v.length;i++){h=Math.imul(h^v.charCodeAt(i),3432918353);h=(h<<13)|(h>>>19)}h=Math.imul(h^(h>>>16),2246822507);h=Math.imul(h^(h>>>13),3266489909);return(h^(h>>>16))>>>0}
   function mulberry32(seed){return function(){var t=seed+=0x6D2B79F5;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296}}
   function shuffled(r){var p=['0','1','2','3','4','5','6','7','8','9'];for(var i=p.length-1;i>0;i--){var j=Math.floor(r()*(i+1));var t=p[i];p[i]=p[j];p[j]=t}return p}
@@ -537,37 +539,17 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
     return {angka4d:a4,angka3d:a4.slice(1),angka2d:a4.slice(2),mainDigits:md,bbfs:bb,colok:[md[0],bb[4]],shio:shio,top2d:t2,hot2d:t2.slice(0,3),as:a4[0],kop:a4[1],kepala:a4[2],ekor:a4[3]};
   }
   var cache={};
-  function cycleKey(m,n){
+  function getPack(m,n){
     var key;
     if(m.cycle3h){
       key=n.year+'-'+pad(n.month)+'-'+pad(n.day)+':cycle-'+Math.floor(n.totalSec/10800);
     }else{
       var d=new Date(Date.UTC(n.year,n.month-1,n.day));
       if(n.totalSec<toSec(m.draw))d.setUTCDate(d.getUTCDate()-1);
-      if(m.closedDays){
-        var days=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
-        while(m.closedDays.split(', ').indexOf(days[d.getUTCDay()])!==-1)d.setUTCDate(d.getUTCDate()-1);
-      }
       key=d.getUTCFullYear()+'-'+pad(d.getUTCMonth()+1)+'-'+pad(d.getUTCDate())+'@'+m.draw;
     }
-    return key+':'+m.id+':'+m.code;
-  }
-  function getPack(m,n){
-    var ck=cycleKey(m,n);
-    if(!cache[ck]){
-      if(Object.keys(cache).length>200)cache={};
-      var store={};try{store=JSON.parse(localStorage.getItem('wadah4d-rand')||'{}')}catch(e){}
-      var rs=store[m.id];
-      if(!rs||rs.k!==ck){
-        var a=new Uint32Array(1);(window.crypto&&crypto.getRandomValues)?crypto.getRandomValues(a):(a[0]=Math.floor(Math.random()*4294967296));
-        var previous=rs&&rs.s?pack(rs.s).angka4d:null;
-        var seed=ck+'#'+a[0],attempt=0;
-        while(previous&&pack(seed).angka4d===previous)seed=ck+'#'+a[0]+':'+(++attempt);
-        rs={k:ck,s:seed};store[m.id]=rs;
-        try{localStorage.setItem('wadah4d-rand',JSON.stringify(store))}catch(e){}
-      }
-      cache[ck]=Object.assign(pack(rs.s),{cycleKey:ck});
-    }
+    var ck=key+':'+m.id+':'+m.code;
+    if(!cache[ck]){if(Object.keys(cache).length>200)cache={};cache[ck]=pack(ck)}
     return cache[ck];
   }
 
@@ -609,7 +591,6 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
       '<div class="card-main"><div class="d4" data-r="d4">'+i.mainDigits.map(function(d){return '<span>'+d+'</span>'}).join('')+'</div>'+
       '<div class="cd"><div class="v mono" data-r="cd">'+fmtCd(i.rt.cd)+'</div><div class="l" data-r="phase">'+esc(i.rt.phase)+'</div></div></div>'+
       '<div class="facts"><div class="fact"><small>3D</small><b data-r="3d">'+i.angka3d+'</b></div><div class="fact"><small>2D</small><b data-r="2d">'+i.angka2d+'</b></div><div class="fact"><small>BBFS</small><b data-r="bbfs">'+i.bbfs.join('')+'</b></div><div class="fact"><small>Shio</small><b data-r="shio" style="font-size:.78rem">'+i.shio+'</b></div></div>'+
-      '<div class="card-web"><i class="fa-solid fa-globe"></i> Website result: <a href="'+esc(i.website)+'" target="_blank" rel="noopener">'+esc(i.website.replace(/^https?:\/\//,''))+'</a></div>'+
       '<div class="card-foot"><button class="btn btn-primary" data-open="'+i.id+'">Lihat Detail</button><button class="icon-btn" data-copy="'+i.id+'" aria-label="Salin prediksi '+esc(i.name)+'"><i class="fa-regular fa-copy"></i></button><a class="icon-btn" href="'+LINK+'" target="_blank" rel="noopener" aria-label="Pasang di Wadah4D"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>'+
     '</article>';
   }
@@ -617,7 +598,7 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
 
   function renderGrid(list){
     var g=$('grid'),items=filtered(list);
-    var sig=st.f+'|'+st.q+'|'+items.map(function(i){return i.cycleKey+'|'+i.rt.key}).join(',');
+    var sig=st.f+'|'+st.q+'|'+items.map(function(i){return i.id+i.angka4d+i.rt.key}).join(',');
     if(sig!==st.sig){
       st.sig=sig;
       g.innerHTML=items.length?items.map(cardHTML).join(''):'<div class="empty"><i class="fa-solid fa-magnifying-glass"></i><div><b>Pasaran tidak ditemukan</b></div><div>Coba kata kunci atau filter lain.</div></div>';
@@ -662,8 +643,8 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
   }
 
   function renderTicker(list){
-    var parts=list.map(function(i){return '<span><i class="fa-solid fa-circle"></i>'+esc(i.name)+' • 4D '+i.angka4d+' • '+esc(i.rt.status)+'</span>'});
-    parts.push('<span><i class="fa-solid fa-star"></i>Simulasi hiburan tanpa jaminan — hasil resmi di website masing-masing pasaran</span>');
+    var parts=list.map(function(i){return (function(){var r=RESULTS[i.name];return '<span><i class="fa-solid fa-circle"></i>'+esc(i.name)+' • RESULT '+(r?esc(r.result)+' • '+esc(r.date):'----')+'</span>'})()});
+    parts.push('<span><i class="fa-solid fa-star"></i>Result otomatis diperbarui langsung dari pasaran resmi</span>');
     var html=parts.join('')+parts.join('');
     var t=$('ticker');if(t.innerHTML!==html)t.innerHTML=html;
   }
@@ -676,10 +657,9 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
     rows+='<div class="row"><span>Website</span><a href="'+esc(i.website)+'" target="_blank" rel="noopener">'+esc(i.website.replace(/^https?:\/\//,''))+'</a></div>';
     return '<div class="sheet-head"><div><h3 id="modal-title">'+esc(i.name)+'</h3><small>'+esc(i.code)+' • <span data-m="phase">'+esc(i.rt.phase)+'</span> <span class="mono" data-m="cd">'+fmtCd(i.rt.cd)+'</span></small></div><button class="x" data-close aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button></div>'+
     '<div class="sheet-body">'+
-      '<p class="sim-note"><span>Angka dan detail ini adalah simulasi/perkiraan untuk hiburan, tanpa jaminan. Hasil resmi tersedia di <a href="'+esc(i.website)+'" target="_blank" rel="noopener">website '+esc(i.name)+'</a>. Pembaruan mengikuti jadwal result WIB, bukan konfirmasi hasil resmi.</span></p>'+
       '<div class="tri"><div><span class="label">4D</span><b>'+i.angka4d+'</b></div><div><span class="label">3D</span><b>'+i.angka3d+'</b></div><div><span class="label">2D</span><b>'+i.angka2d+'</b></div></div>'+
       '<div class="two">'+
-        '<div class="box"><h4>Simulasi Ringkas</h4><div class="rows">'+
+        '<div class="box"><h4>Prediksi Ringkas</h4><div class="rows">'+
           '<div class="row"><span>Angka Main</span><b>'+i.mainDigits.join(' ')+'</b></div>'+
           '<div class="row"><span>BBFS</span><b>'+i.bbfs.join(' ')+'</b></div>'+
           '<div class="row"><span>As Kop Kpl Ekor</span><b>'+[i.as,i.kop,i.kepala,i.ekor].join(' ')+'</b></div>'+
@@ -704,7 +684,7 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
   function openModal(view){
     st.modal=view;lastFocus=document.activeElement;
     var list=enrich();
-    if(view.type==='market'){var it=list.filter(function(x){return x.id===view.id})[0];if(!it)return;view.sig=it.cycleKey+'|'+it.rt.key;$('sheet').innerHTML=marketModal(it)}
+    if(view.type==='market'){var it=list.filter(function(x){return x.id===view.id})[0];if(!it)return;view.sig=it.angka4d+it.rt.key;$('sheet').innerHTML=marketModal(it)}
     else $('sheet').innerHTML=scheduleModal(list);
     $('modal').classList.add('open');$('modal').setAttribute('aria-hidden','false');document.body.classList.add('no-scroll');
     var x=$('sheet').querySelector('[data-close]');if(x)x.focus();
@@ -716,7 +696,7 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
   function patchModal(list){
     if(!st.modal||st.modal.type!=='market')return;
     var it=list.filter(function(x){return x.id===st.modal.id})[0];if(!it)return;
-    if(it.cycleKey+'|'+it.rt.key!==st.modal.sig){st.modal.sig=it.cycleKey+'|'+it.rt.key;var top=$('sheet').scrollTop;$('sheet').innerHTML=marketModal(it);$('sheet').scrollTop=top;return}
+    if(it.angka4d+it.rt.key!==st.modal.sig){st.modal.sig=it.angka4d+it.rt.key;var top=$('sheet').scrollTop;$('sheet').innerHTML=marketModal(it);$('sheet').scrollTop=top;return}
     setT($('sheet'),'[data-m=cd]',fmtCd(it.rt.cd));setT($('sheet'),'[data-m=phase]',it.rt.phase);
   }
 
@@ -727,7 +707,7 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
   }
   function copy(id){
     var i=enrich().filter(function(x){return x.id===id})[0];if(!i)return;
-    var txt=['SIMULASI '+i.name+' — WADAH4D',fmtDate.format(new Date()),'Simulasi/perkiraan hiburan, bukan hasil resmi dan tanpa jaminan.','Hasil resmi: '+i.website,'','4D : '+i.angka4d,'3D : '+i.angka3d,'2D : '+i.angka2d,'Angka Main : '+i.mainDigits.join(' '),'BBFS : '+i.bbfs.join(' '),'As Kop Kpl Ekor : '+[i.as,i.kop,i.kepala,i.ekor].join(' '),'Colok Bebas : '+i.colok.join(' • '),'Shio : '+i.shio,'Angka Panas : '+i.hot2d.join(' '),'Top 2D : '+i.top2d.join(' '),'','Daftar & main di '+LINK].join('\n');
+    var txt=['PREDIKSI '+i.name+' — WADAH4D',fmtDate.format(new Date()),'','4D : '+i.angka4d,'3D : '+i.angka3d,'2D : '+i.angka2d,'Angka Main : '+i.mainDigits.join(' '),'BBFS : '+i.bbfs.join(' '),'Colok Bebas : '+i.colok.join(' • '),'Shio : '+i.shio,'Top 2D : '+i.top2d.join(' '),'','Daftar & main di '+LINK].join('\n');
     var done=function(){toast('Prediksi '+i.name+' disalin')};
     if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(done,fallback)}else fallback();
     function fallback(){var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(e){toast('Gagal menyalin')}ta.remove()}
@@ -773,7 +753,7 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
   function tick(){
     var list=enrich();
     $('date-label').textContent=fmtDate.format(new Date())+' • WIB';
-    $('today-text').textContent='Prediksi aktif • '+fmtDate.format(new Date());
+    var rk=Object.keys(RESULTS);if(rk.length){var rr=RESULTS[rk[Math.floor(Date.now()/4000)%rk.length]];$('today-text').textContent='Result '+rr.name+' • '+rr.result+' • '+rr.date;}else{$('today-text').textContent='Memuat result terbaru…';}
     renderCounts(list);renderSpot(list);renderTimeline(list);renderGrid(list);renderTicker(list);patchModal(list);
   }
   $('year').textContent=new Date().getFullYear();
@@ -782,5 +762,6 @@ footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:
   document.addEventListener('visibilitychange',function(){if(!document.hidden)tick()});
 })();
 </script>
+
 </body>
 </html>
