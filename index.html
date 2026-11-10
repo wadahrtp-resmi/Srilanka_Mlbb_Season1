@@ -1,1173 +1,1545 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="theme-color" content="#0b1018">
-    <meta name="description"
-          content="Informasi turnamen, klasemen peserta, penghargaan, dan peraturan kompetisi.">
-
-    <title>Turnamen Komunitas | Klasemen & Informasi</title>
-
-    <link rel="icon" href="data:,">
-
-    <link rel="preload"
-          as="image"
-          href="/turnamen1/assets/wadah4d1.png">
-
-    <link rel="preload"
-          as="image"
-          href="/turnamen1/assets/CELCIZ12-mobile.webp"
-          fetchpriority="high">
-
-    <style>
-        :root {
-            color-scheme: dark;
-
-            --bg: #0b1018;
-            --surface: #111925;
-            --surface-2: #151f2d;
-            --border: #253244;
-
-            --text: #edf4fc;
-            --muted: #96a7bc;
-
-            --accent: #39d8ed;
-            --accent-dark: #102e3b;
-
-            --radius: 16px;
-            --container: 1120px;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 90px;
-        }
-
-        body {
-            margin: 0;
-            min-width: 320px;
-            background:
-                radial-gradient(
-                    ellipse at 50% 0%,
-                    rgba(31, 104, 139, 0.13),
-                    transparent 45%
-                ),
-                var(--bg);
-
-            color: var(--text);
-
-            font-family:
-                Inter,
-                ui-sans-serif,
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
-
-            font-size: 15px;
-            line-height: 1.65;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a {
-            color: inherit;
-        }
-
-        button,
-        input {
-            font: inherit;
-        }
-
-        button,
-        a {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        button:focus-visible,
-        a:focus-visible,
-        input:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 3px;
-        }
-
-        img {
-            max-width: 100%;
-        }
-
-        .container {
-            width: min(
-                var(--container),
-                calc(100% - 32px)
-            );
-
-            margin-inline: auto;
-        }
-
-        /* HEADER */
-
-        .header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-
-            background: rgba(11, 16, 24, 0.9);
-            border-bottom: 1px solid rgba(37, 50, 68, 0.85);
-
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-        }
-
-        .header-inner {
-            min-height: 72px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-
-            min-width: 0;
-            text-decoration: none;
-        }
-
-        .brand img {
-            display: block;
-            width: auto;
-            height: 42px;
-
-            border-radius: 8px;
-            object-fit: contain;
-        }
-
-        .brand-copy {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.35;
-        }
-
-        .brand-title {
-            font-size: 15px;
-            font-weight: 800;
-            letter-spacing: 0.04em;
-        }
-
-        .brand-caption {
-            color: var(--muted);
-            font-size: 11px;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-
-            min-height: 42px;
-            padding: 10px 17px;
-
-            border: 1px solid transparent;
-            border-radius: 10px;
-
-            background: var(--accent);
-            color: #06212a;
-
-            font-size: 13px;
-            font-weight: 800;
-            text-decoration: none;
-            white-space: nowrap;
-
-            cursor: pointer;
-            transition:
-                background 0.2s ease,
-                border-color 0.2s ease,
-                transform 0.2s ease;
-        }
-
-        .button:hover {
-            background: #70e6f4;
-            transform: translateY(-1px);
-        }
-
-        .button-secondary {
-            background: var(--surface-2);
-            color: var(--text);
-            border-color: var(--border);
-        }
-
-        .button-secondary:hover {
-            background: #202d3e;
-        }
-
-        /* HERO BANNER */
-
-        .hero {
-            padding-top: 24px;
-        }
-
-        .hero-banner {
-            position: relative;
-            overflow: hidden;
-
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: var(--surface);
-        }
-
-        .hero-banner img {
-            display: block;
-            width: 100%;
-            height: auto;
-            aspect-ratio: 1100 / 300;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        /* PAGE INTRO */
-
-        .page-intro {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 20px;
-
-            padding: 30px 0 18px;
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-
-            margin-bottom: 8px;
-
-            color: var(--accent);
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-        }
-
-        .status-dot {
-            width: 7px;
-            height: 7px;
-
-            border-radius: 50%;
-            background: var(--accent);
-
-            box-shadow: 0 0 12px rgba(57, 216, 237, 0.5);
-        }
-
-        h1,
-        h2,
-        h3,
-        p {
-            margin-top: 0;
-        }
-
-        .page-title {
-            margin-bottom: 6px;
-
-            font-size: clamp(25px, 4vw, 36px);
-            font-weight: 850;
-            line-height: 1.2;
-            letter-spacing: -0.04em;
-        }
-
-        .page-description {
-            max-width: 600px;
-            margin-bottom: 0;
-
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        .update-info {
-            flex-shrink: 0;
-
-            padding: 9px 12px;
-
-            border: 1px solid var(--border);
-            border-radius: 10px;
-
-            background: var(--surface);
-
-            color: var(--muted);
-            font-size: 11px;
-        }
-
-        .update-info strong {
-            color: var(--text);
-            font-weight: 700;
-        }
-
-        /* CONTENT GRID */
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.8fr) minmax(260px, 1fr);
-            align-items: start;
-            gap: 18px;
-
-            padding-bottom: 24px;
-        }
-
-        .card {
-            min-width: 0;
-            overflow: hidden;
-
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-
-            background:
-                linear-gradient(
-                    160deg,
-                    rgba(255, 255, 255, 0.018),
-                    transparent 55%
-                ),
-                var(--surface);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-
-            padding: 20px 20px 16px;
-        }
-
-        .card-title {
-            margin-bottom: 3px;
-
-            font-size: 17px;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-
-        .card-description {
-            margin-bottom: 0;
-
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        .card-count {
-            flex-shrink: 0;
-
-            padding: 5px 9px;
-
-            border: 1px solid var(--border);
-            border-radius: 8px;
-
-            background: var(--surface-2);
-            color: var(--muted);
-
-            font-size: 11px;
-        }
-
-        /* SEARCH */
-
-        .search-form {
-            display: flex;
-            gap: 8px;
-
-            padding: 0 20px 18px;
-        }
-
-        .search-input {
-            width: 100%;
-            min-width: 0;
-            min-height: 42px;
-
-            padding: 10px 12px;
-
-            border: 1px solid var(--border);
-            border-radius: 10px;
-
-            background: #0c131d;
-            color: var(--text);
-
-            font-size: 13px;
-        }
-
-        .search-input::placeholder {
-            color: #74859b;
-        }
-
-        /* TABLE */
-
-        .table-scroll {
-            width: 100%;
-            overflow-x: auto;
-            overscroll-behavior-x: contain;
-        }
-
-        .leaderboard {
-            width: 100%;
-            border-collapse: collapse;
-            white-space: nowrap;
-
-            text-align: left;
-            font-size: 12px;
-        }
-
-        .leaderboard thead {
-            background: rgba(255, 255, 255, 0.025);
-        }
-
-        .leaderboard th {
-            padding: 13px 18px;
-
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-
-            color: var(--muted);
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .leaderboard td {
-            padding: 15px 18px;
-            border-bottom: 1px solid rgba(37, 50, 68, 0.7);
-        }
-
-        .leaderboard tbody tr:last-child td {
-            border-bottom: 0;
-        }
-
-        .leaderboard tbody tr {
-            transition: background 0.2s ease;
-        }
-
-        .leaderboard tbody tr:hover {
-            background: rgba(57, 216, 237, 0.035);
-        }
-
-        .rank {
-            width: 56px;
-            color: var(--muted);
-            font-weight: 800;
-        }
-
-        .username {
-            color: var(--text);
-            font-weight: 700;
-        }
-
-        .score {
-            color: var(--accent);
-            font-weight: 800;
-            text-align: right;
-        }
-
-        .text-right {
-            text-align: right;
-        }
-
-        .empty-state {
-            padding: 42px 20px;
-            text-align: center;
-        }
-
-        .empty-icon {
-            display: grid;
-            place-items: center;
-
-            width: 52px;
-            height: 52px;
-            margin: 0 auto 14px;
-
-            border: 1px solid var(--border);
-            border-radius: 16px;
-
-            background: var(--surface-2);
-            color: var(--accent);
-
-            font-size: 23px;
-        }
-
-        .empty-state h3 {
-            margin-bottom: 6px;
-            font-size: 14px;
-        }
-
-        .empty-state p {
-            max-width: 290px;
-            margin: 0 auto;
-
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        .empty-state[hidden] {
-            display: none;
-        }
-
-        /* INFORMATION LIST */
-
-        .info-list {
-            display: grid;
-            gap: 0;
-
-            margin: 0;
-            padding: 0;
-
-            list-style: none;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-
-            padding: 15px 20px;
-
-            border-top: 1px solid rgba(37, 50, 68, 0.75);
-        }
-
-        .info-icon {
-            display: grid;
-            place-items: center;
-            flex-shrink: 0;
-
-            width: 34px;
-            height: 34px;
-
-            border: 1px solid var(--border);
-            border-radius: 10px;
-
-            background: var(--surface-2);
-            color: var(--accent);
-
-            font-size: 14px;
-            font-weight: 800;
-        }
-
-        .info-copy {
-            min-width: 0;
-        }
-
-        .info-copy strong {
-            display: block;
-            margin-bottom: 2px;
-
-            font-size: 12px;
-            font-weight: 800;
-        }
-
-        .info-copy p {
-            margin-bottom: 0;
-
-            color: var(--muted);
-            font-size: 11px;
-            line-height: 1.7;
-        }
-
-        /* RULES */
-
-        .rules {
-            margin-bottom: 30px;
-        }
-
-        .rules-content {
-            padding: 0 20px 20px;
-        }
-
-        .rules-list {
-            display: grid;
-            gap: 12px;
-
-            margin: 0;
-            padding-left: 20px;
-
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        .rules-list li {
-            padding-left: 4px;
-        }
-
-        .rules-list li::marker {
-            color: var(--accent);
-            font-weight: 800;
-        }
-
-        /* FOOTER */
-
-        .footer {
-            border-top: 1px solid var(--border);
-            background: rgba(7, 11, 17, 0.6);
-        }
-
-        .footer-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
-
-        .footer p {
-            margin: 0;
-            color: var(--muted);
-            font-size: 11px;
-        }
-
-        .footer-brand {
-            color: var(--text);
-            font-weight: 800;
-        }
-
-        /* RESPONSIVE */
-
-        @media (max-width: 800px) {
-            .content-grid {
-                grid-template-columns: minmax(0, 1fr);
-            }
-
-            .page-intro {
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .update-info {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 520px) {
-            .container {
-                width: calc(100% - 24px);
-            }
-
-            .header-inner {
-                min-height: 64px;
-                gap: 10px;
-            }
-
-            .brand {
-                gap: 8px;
-            }
-
-            .brand img {
-                height: 34px;
-            }
-
-            .brand-title {
-                font-size: 12px;
-            }
-
-            .brand-caption {
-                font-size: 9px;
-            }
-
-            .header-actions {
-                gap: 6px;
-            }
-
-            .button {
-                min-height: 38px;
-                padding: 8px 11px;
-                border-radius: 8px;
-                font-size: 11px;
-            }
-
-            .hero {
-                padding-top: 14px;
-            }
-
-            .hero-banner {
-                border-radius: 12px;
-            }
-
-            .hero-banner img {
-                aspect-ratio: auto;
-                object-fit: contain;
-            }
-
-            .page-intro {
-                padding-top: 24px;
-            }
-
-            .page-title {
-                font-size: 27px;
-            }
-
-            .content-grid {
-                gap: 14px;
-            }
-
-            .card-header {
-                padding: 17px 15px 14px;
-            }
-
-            .search-form {
-                padding: 0 15px 15px;
-            }
-
-            .leaderboard th,
-            .leaderboard td {
-                padding: 13px 12px;
-            }
-
-            .info-item {
-                padding: 14px 15px;
-            }
-
-            .rules-content {
-                padding: 0 15px 18px;
-            }
-
-            .footer-inner {
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 5px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                transition: none !important;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#071426">
+<link rel="shortcut icon" href="https://i.ibb.co/d4XWdjRR/Screenshot-15-removebg-preview.png">
+<title>JP Harian — WADAH4D</title>
+  <!-- LOADING SCREEN -->
+<div id="loader">
+    <div class="loader-content">
+
+        <img src="https://wadahpordinih.com/images/logoweb.png"
+             class="loader-logo"
+             alt="WADAH4D">
+
+        <div class="loader-bar">
+            <div class="loader-progress"></div>
+        </div>
+
+     <div class="loader-text">
+    <span>L</span>
+    <span>O</span>
+    <span>A</span>
+    <span>D</span>
+    <span>I</span>
+    <span>N</span>
+    <span>G</span>
+    <span>.</span>
+    <span>.</span>
+    <span>.</span>
+</div>
+
+    </div>
+</div>
+  <style>
+/*=============================
+     WADAH4D LOADER V3
+     FAST • SMOOTH • MOBILE
+==============================*/
+
+#loader{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#071426;
+
+    z-index:999999;
+
+    transition:
+    opacity .35s ease,
+    visibility .35s ease;
+
+}
+
+.loader-box{
+
+    text-align:center;
+
+    animation:fadeIn .5s ease;
+
+}
+
+.loader-logo{
+
+    width:280px;
+    max-width:75vw;
+
+    user-select:none;
+    pointer-events:none;
+
+    animation:floatLogo 2.2s ease-in-out infinite;
+
+}
+
+/* BAR */
+
+.loader-bar{
+
+    width:230px;
+    height:6px;
+
+    margin:28px auto 16px;
+
+    background:#172b46;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+.loader-progress{
+
+    display:block;
+
+    width:100%;
+    height:100%;
+
+    background:linear-gradient(90deg,#55c7ff,#a8e8ff);
+
+    transform:translateX(-100%);
+
+    animation:progress .85s ease forwards;
+
+}
+
+.loader-text{
+    display:flex;
+    justify-content:center;
+    gap:2px;
+    margin-top:18px;
+}
+
+.loader-text span{
+
+    font-size:18px;
+    font-weight:800;
+    letter-spacing:1px;
+
+    background:linear-gradient(#e8f8ff,#55c7ff,#1677d2);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:
+        0 1px 0 rgba(255,255,255,.4),
+        0 2px 3px rgba(0,0,0,.35);
+
+    animation:bounce .9s infinite ease-in-out;
+}
+
+.loader-text span:nth-child(2){animation-delay:.08s;}
+.loader-text span:nth-child(3){animation-delay:.16s;}
+.loader-text span:nth-child(4){animation-delay:.24s;}
+.loader-text span:nth-child(5){animation-delay:.32s;}
+.loader-text span:nth-child(6){animation-delay:.40s;}
+.loader-text span:nth-child(7){animation-delay:.48s;}
+.loader-text span:nth-child(8){animation-delay:.56s;}
+.loader-text span:nth-child(9){animation-delay:.64s;}
+.loader-text span:nth-child(10){animation-delay:.72s;}
+
+@keyframes bounce{
+
+    0%,100%{
+        transform:translateY(0);
+        opacity:.7;
+    }
+
+    50%{
+        transform:translateY(-4px);
+        opacity:1;
+    }
+
+}
+
+.hide-loader{
+
+    opacity:0;
+    visibility:hidden;
+
+}
+
+/*=============================
+          ANIMATION
+==============================*/
+
+@keyframes progress{
+
+    to{
+
+        transform:translateX(0);
+
+    }
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+        transform:translateY(8px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes floatLogo{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-5px);
+
+    }
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.loader-logo{
+
+    width:220px;
+
+}
+
+.loader-bar{
+
+    width:190px;
+
+}
+
+.loader-text{
+
+    font-size:14px;
+
+}
+
+    } 
+  </style>
+ <script>
+const loader = document.getElementById("loader");
+
+function hideLoader() {
+
+    if (!loader) return;
+
+    loader.classList.add("hide-loader");
+
+    setTimeout(() => {
+        loader.remove();
+    }, 5000);
+
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Delay 800ms agar animasi terlihat smooth
+    setTimeout(hideLoader, 5000);
+
+});
+
+// Backup jika halaman lambat
+window.addEventListener("load", hideLoader);
+
+// Paksa hilang maksimal 3 detik jika ada yang macet
+setTimeout(hideLoader, 5000);
+  </script>
+  <style>
+/* =========================================
+   BOTTOM NAV — ORANGE 3D
+   VISUAL ONLY
+========================================= */
+
+.bottom{
+    background:transparent;
+}
+
+.bottom-inner{
+    position:relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            #102b4b 0%,
+            #0b1d35 45%,
+            #071426 100%
+        );
+
+    border:1px solid rgba(66,186,255,.35);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.65),
+        0 0 20px rgba(66,186,255,.10),
+        inset 0 1px 0 rgba(255,180,90,.12),
+        inset 0 -3px 6px rgba(0,0,0,.75);
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    overflow:hidden;
+}
+
+
+/* =========================================
+   BLUE LIGHT LINE
+========================================= */
+
+.bottom-inner::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:10%;
+    right:10%;
+
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #0b069c,
+            #ef5cff,
+            #42baff,
+            transparent
+        );
+
+    opacity:.8;
+
+    box-shadow:
+        0 0 10px rgba(66,186,255,.55);
+}
+
+
+/* =========================================
+   MENU
+========================================= */
+
+.bottom a{
+    position:relative;
+
+    color:#9b8c82;
+
+    font-weight:600;
+
+    text-shadow:
+        0 1px 2px rgba(0,0,0,.8);
+
+    transition:
+        color .3s ease,
+        transform .3s ease;
+}
+
+
+/* =========================================
+   ICON 3D
+========================================= */
+
+.bottom a span{
+
+    color:#a99a90;
+
+    background:
+        linear-gradient(
+            145deg,
+            #15365b,
+            #0a1b31
+        );
+
+    border:1px solid rgba(255,132,48,.18);
+
+    box-shadow:
+        inset 0 1px 1px rgba(168,232,255,.10),
+        inset 0 -3px 5px rgba(0,0,0,.70),
+        0 3px 6px rgba(0,0,0,.40);
+
+    transition:
+        all .3s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   ACTIVE ORANGE
+========================================= */
+
+.bottom a.active{
+    color:#55c7ff;
+
+    text-shadow:
+        0 0 10px rgba(66,186,255,.30);
+}
+
+.bottom a.active span{
+
+    color:#a8e8ff;
+
+    background:
+        linear-gradient(
+            145deg,
+            #164a7a,
+            #0d2b4b
+        );
+
+    border-color:
+        rgba(66,186,255,.65);
+
+    box-shadow:
+
+        0 4px 12px rgba(0,0,0,.55),
+
+        inset 0 1px 2px rgba(168,232,255,.25),
+        inset 0 -3px 5px rgba(0,0,0,.65),
+
+        0 0 16px rgba(66,186,255,.20);
+
+    text-shadow:
+        0 0 9px rgba(168,232,255,.55);
+}
+
+
+/* =========================================
+   ACTIVE INDICATOR
+========================================= */
+
+.bottom a.active::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:4px;
+    left:50%;
+
+    width:20px;
+    height:2px;
+
+    transform:translateX(-50%);
+
+    border-radius:10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #42baff,
+            #a8e8ff,
+            #42baff,
+            transparent
+        );
+
+    box-shadow:
+        0 0 8px rgba(255,113,29,.8);
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+.bottom a:hover{
+    color:#72d5ff;
+}
+
+.bottom a:hover span{
+
+    color:#a8e8ff;
+
+    background:
+        linear-gradient(
+            145deg,
+            #164a7a,
+            #0b1d35
+        );
+
+    border-color:
+        rgba(66,186,255,.40);
+
+    box-shadow:
+        0 4px 10px rgba(0,0,0,.45),
+        inset 0 1px 2px rgba(168,232,255,.15),
+        inset 0 -3px 5px rgba(0,0,0,.60),
+        0 0 12px rgba(66,186,255,.14);
+}
+
+
+/* =========================================
+   TOUCH
+========================================= */
+
+.bottom a:active{
+    transform:translateY(1px);
+}
+
+.bottom a:active span{
+
+    transform:scale(.95);
+
+    box-shadow:
+        inset 0 2px 5px rgba(0,0,0,.8);
+}
+:root{
+  --bg:#08090b;
+  --surface:#111316;
+  --surface2:#17191d;
+  --line:#272a2f;
+  --gold:#55c7ff;
+  --gold2:#a8e8ff;
+  --text:#f5f5f5;
+  --muted:#858991;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  padding-bottom:78px;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;
+  background:radial-gradient(circle at 50% -10%,#1677d2 0,transparent 38%);
+}
+.top{
+  position:sticky;top:0;z-index:30;
+  background:
+    linear-gradient(rgba(8,9,11,.92),rgba(8,9,11,.92)),
+    url("https://wadahpordinih.com/images/logoweb.png");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--line);
+}
+.topbar{
+  height:64px;display:flex;align-items:center;justify-content:space-between;
+  padding:8px 15px;max-width:600px;margin:auto;
+}
+.logo{display:block;height:43px;max-width:170px}
+.logo img{height:100%;width:auto;display:block;object-fit:contain}
+.icon-btn{
+  width:38px;height:38px;border:1px solid var(--line);border-radius:10px;
+  background:var(--surface);color:#ddd;font-size:17px;
+}
+.hero{
+  max-width:600px;margin:auto;padding:27px 15px 20px;
+}
+.hero-box{
+  border:1px solid #1e4d7a;border-radius:17px;padding:25px 20px;
+  background:
+    radial-gradient(circle at 85% 15%,rgba(66,186,255,.16),transparent 30%),
+    linear-gradient(145deg,#102b4b,#101216 65%);
+  overflow:hidden;position:relative;
+}
+.hero-box:after{
+  content:"";position:absolute;width:130px;height:130px;border-radius:50%;
+  right:-50px;bottom:-70px;border:1px solid #2d6da6;opacity:.5;
+}
+/* OUTLINE JALAN SETIAP SISI */
+.hero-box{
+  position:relative;
+}
+
+/* garis utama */
+.hero-box::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border:2px solid #248fe0;
+  border-radius:17px;
+  pointer-events:none;
+  z-index:99;
+}
+
+/* cahaya yang berjalan */
+.hero-box::after{
+  content:"";
+  position:absolute;
+
+  width:45px;
+  height:2px;
+
+  background:#55c7ff;
+
+  box-shadow:0 0 5px #55c7ff;
+
+  top:0;
+  left:0;
+
+  border-radius:10px;
+
+  pointer-events:none;
+  z-index:100;
+
+  animation:kelilingBox 4s linear infinite;
+}
+
+@keyframes kelilingBox{
+
+  /* ATAS */
+  0%{
+    top:0;
+    left:0;
+    width:45px;
+    height:2px;
+  }
+
+  24%{
+    top:0;
+    left:calc(100% - 45px);
+    width:45px;
+    height:2px;
+  }
+
+  /* KANAN */
+  25%{
+    top:0;
+    left:calc(100% - 2px);
+    width:2px;
+    height:45px;
+  }
+
+  49%{
+    top:calc(100% - 45px);
+    left:calc(100% - 2px);
+    width:2px;
+    height:45px;
+  }
+
+  /* BAWAH */
+  50%{
+    top:calc(100% - 2px);
+    left:calc(100% - 45px);
+    width:45px;
+    height:2px;
+  }
+
+  74%{
+    top:calc(100% - 2px);
+    left:0;
+    width:45px;
+    height:2px;
+  }
+
+  /* KIRI */
+  75%{
+    top:calc(100% - 45px);
+    left:0;
+    width:2px;
+    height:45px;
+  }
+
+  99%{
+    top:0;
+    left:0;
+    width:2px;
+    height:45px;
+  }
+
+  /* KEMBALI KE ATAS */
+  100%{
+    top:0;
+    left:0;
+    width:45px;
+    height:2px;
+  }
+}
+.eyebrow{font-size:10px;color:var(--gold);letter-spacing:2.5px;font-weight:700}
+h1{
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:31px;
+  line-height:1.05;
+  margin:9px 0 8px;
+  letter-spacing:-1px;
+  font-weight:900 !important;
+  -webkit-text-stroke:0.6px currentColor;
+}
+.hero p{
+  margin:0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.55;
+  max-width:410px;
+  font-weight:900 !important;
+  -webkit-text-stroke:0.4px currentColor;
+}
+.stats{display:flex;gap:8px;margin-top:18px}
+.stat{flex:1;background:#0b1b30;border:1px solid var(--line);border-radius:10px;padding:10px}
+.stat b{display:block;font-size:15px;color:var(--gold2)}.stat span{font-size:9px;color:var(--muted)}
+.section{max-width:600px;margin:auto;padding:0 15px 22px}
+.title-row{display:flex;align-items:center;justify-content:space-between;margin:3px 0 12px}
+.title-row h2{font-size:16px;margin:0}.title-row small{color:var(--muted);font-size:10px}
+.providers{
+  display:flex;gap:8px;overflow-x:auto;padding:2px 1px 8px;
+  scrollbar-width:none;
+}
+.providers::-webkit-scrollbar{display:none}
+.provider{
+  flex:0 0 auto;background:var(--surface);color:#aaa;
+  border:1px solid var(--line);border-radius:20px;padding:9px 13px;
+  font-size:10px;white-space:nowrap;
+}
+.provider.active{background:var(--gold);border-color:var(--gold);color:#111;font-weight:800}
+.search{
+  display:flex;align-items:center;gap:8px;background:var(--surface);
+  border:1px solid var(--line);border-radius:11px;padding:10px 12px;margin-bottom:15px;
+}
+.search span{color:#777}.search input{
+  width:100%;background:none;border:0;outline:0;color:#fff;font-size:12px;
+}
+.search input::placeholder{color:#666}
+.grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;
+}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:13px;
+  overflow:hidden;min-width:0;
+}
+.photo{
+  aspect-ratio:1.22/1;background:#14263d;display:flex;align-items:center;
+  justify-content:center;color:#696d74;font-size:9px;letter-spacing:1px;
+  overflow:hidden;cursor:pointer;position:relative;
+}
+.photo:after{
+  content:"VIEW";position:absolute;right:7px;bottom:7px;
+  background:rgba(0,0,0,.72);color:#fff;border:1px solid #555;
+  border-radius:5px;padding:4px 6px;font-size:7px;
+}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.info{padding:10px}
+.provider-name{
+  color:var(--gold);font-size:8px;font-weight:800;
+  text-transform:uppercase;letter-spacing:.8px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.game{
+  font-size:11px;font-weight:700;margin-top:5px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.amount{font-size:12px;color:var(--gold2);font-weight:800;margin-top:9px}
+.date{font-size:8px;color:#71747b;margin-top:5px}
+.empty{display:none;text-align:center;color:var(--muted);padding:30px;font-size:12px}
+.bottom{
+  position:fixed;bottom:0;left:0;right:0;height:68px;z-index:40;
+  background:rgba(12,13,16,.97);border-top:1px solid var(--line);
+  display:flex;justify-content:center;
+}
+.bottom-inner{width:100%;max-width:600px;display:flex}
+.bottom a{
+  flex:1;text-decoration:none;color:#777;text-align:center;font-size:9px;
+  padding-top:12px;
+}
+.bottom a span{display:block;font-size:19px;margin-bottom:4px}
+.bottom a.active{color:var(--gold)}
+.lightbox{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:999999;
+  background:#000;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+.lightbox.show{display:flex}
+.lightbox img{max-width:100%;max-height:88vh;border-radius:10px}
+.close{
+  position:absolute;right:17px;top:14px;width:38px;height:38px;
+  border-radius:50%;background:#191a1e;border:1px solid #444;color:#fff;
+  font-size:25px;line-height:34px;text-align:center;
+}
+@media(min-width:601px){
+  body{background:#050608}
+  .top,.bottom{max-width:600px;margin:auto}
+  .top{border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  .bottom{left:50%;right:auto;transform:translateX(-50%);width:600px}
+}
+</style>
+<style>
+
+.bottom-gif{
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.bottom-gif img{
+    width: 100%;
+    display: block;
+}
+/* =================================
+   FOOTER BANNER
+================================= */
+
+.footer-banner{
+    width:100%;
+    max-width:600px;
+
+    margin:20px auto 20px;
+
+    padding:0 12px;
+}
+
+.footer-banner a{
+    display:block;
+}
+
+.footer-banner img{
+    display:block;
+
+    width:100%;
+    height:auto;
+
+    border-radius:15px;
+
+    border:1px solid rgba(66,186,255,.25);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.40),
+        0 0 18px rgba(66,186,255,.06);
+
+    transition:.3s ease;
+}
+
+.footer-banner img:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.50),
+        0 0 22px rgba(66,186,255,.12);
+}
+.hero-box{
+    position:relative;
+    overflow:hidden;
+    background:#0d0e10;
+}
+
+/* GAMBAR BACKGROUND KECIL + BURAM */
+.hero-background{
+    position:absolute;
+
+    width:70%;
+    height:70%;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%, -50%);
+
+    object-fit:contain;
+
+    filter:blur(5px);
+
+    opacity:.45;
+
+    z-index:0;
+}
+
+
+/* EFEK GELAP DI SEKITAR GAMBAR */
+.hero-overlay{
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(0,0,0,.15) 0%,
+            rgba(0,0,0,.55) 65%,
+            rgba(0,0,0,.85) 100%
+        );
+
+    z-index:1;
+}
+
+
+/* ISI HERO TETAP DI DEPAN */
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+</style>
+<link rel="me" href="https://www.blogger.com/profile/04180086182029086600" />
+<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
+<meta name='google-adsense-platform-domain' content='blogspot.com'/>
+
+<style id="blue-theme-overrides">
+:root {
+  color-scheme: dark;
+  --bg: #071426;
+  --surface: #0d2038;
+  --surface2: #132b49;
+  --line: #24476b;
+  --gold: #55c7ff;
+  --gold2: #a8e8ff;
+  --text: #eef8ff;
+  --muted: #9bb5cc;
+}
+html, body { background-color: #071426; color: #eef8ff; }
+body:before {
+  background: radial-gradient(circle at 50% -10%, rgba(38,145,230,.28) 0, transparent 42%);
+}
+#loader { background: #071426; }
+.loader-bar { background: #183452; }
+.loader-progress {
+  background: linear-gradient(90deg, #1688df, #a8e8ff);
+}
+.loader-text span {
+  background: linear-gradient(#effbff, #55c7ff, #1677d2);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.bottom-inner {
+  background: linear-gradient(145deg, #15365b 0%, #0b203a 48%, #071426 100%);
+  border-color: rgba(85,199,255,.42);
+  box-shadow: 0 12px 30px rgba(0,0,0,.55), 0 0 20px rgba(66,186,255,.12),
+    inset 0 1px 0 rgba(168,232,255,.12), inset 0 -3px 6px rgba(0,0,0,.65);
+}
+.bottom-inner:before {
+  background: linear-gradient(90deg, transparent, #1677d2, #55c7ff, #a8e8ff, transparent);
+  box-shadow: 0 0 10px rgba(66,186,255,.55);
+}
+.bottom a, .bottom a span { color: #a9c6df; }
+.bottom a span {
+  background: linear-gradient(145deg, #20466d, #0b1d35);
+  border-color: rgba(85,199,255,.24);
+  box-shadow: inset 0 1px 1px rgba(168,232,255,.10), inset 0 -3px 5px rgba(0,0,0,.6), 0 3px 6px rgba(0,0,0,.35);
+}
+.bottom a.active, .bottom a:hover { color: #72d5ff; }
+.bottom a.active span, .bottom a:hover span {
+  color: #c4f1ff;
+  background: linear-gradient(145deg, #1c5b91, #0d2b4b);
+  border-color: rgba(85,199,255,.68);
+  box-shadow: 0 4px 12px rgba(0,0,0,.45), inset 0 1px 2px rgba(168,232,255,.2),
+    inset 0 -3px 5px rgba(0,0,0,.55), 0 0 16px rgba(66,186,255,.2);
+}
+.bottom a.active:after {
+  background: linear-gradient(90deg, transparent, #55c7ff, #a8e8ff, #55c7ff, transparent);
+  box-shadow: 0 0 8px rgba(66,186,255,.8);
+}
+.top {
+  background: linear-gradient(rgba(7,20,38,.94), rgba(7,20,38,.94)), url("https://wadahpordinih.com/images/logoweb.png");
+  border-bottom-color: var(--line);
+}
+.icon-btn, .stat, .search, .provider, .card, .close {
+  background-color: var(--surface);
+  border-color: var(--line);
+}
+.hero-box {
+  border-color: #245b8d;
+  background: radial-gradient(circle at 85% 15%, rgba(66,186,255,.17), transparent 32%),
+    linear-gradient(145deg, #102b4b, #0b1b30 68%);
+}
+.hero-box:before { border-color: #248fe0; }
+.hero-box:after { background: #55c7ff; box-shadow: 0 0 7px #55c7ff; }
+.eyebrow, .provider-name { color: #55c7ff; }
+.stat b, .amount { color: #a8e8ff; }
+.provider.active {
+  background: #258fe0;
+  border-color: #55c7ff;
+  color: #061426;
+}
+.photo { background: #14263d; }
+.photo:after { border-color: #3976a8; }
+.lightbox { background: #030b16; }
+.footer-banner img { border-color: rgba(85,199,255,.3); }
+@media (min-width:601px) {
+  body { background: #050f1d; }
+}
+</style>
+
 </head>
-
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
-        <div class="container header-inner">
+<header class="top">
+  <div class="topbar">
+    <a class="logo" href="https://wadah4d02.com/" target="_blank" rel="noopener noreferrer">
+  <img src="https://wadahpordinih.com/images/logoweb.png" alt="WADAH4D">
+</a>
+    <button class="icon-btn" onclick="document.getElementById('searchInput').focus()">⌕</button>
+  </div>
+</header>
 
-            <a class="brand" href="#beranda" aria-label="Beranda">
-                <img
-                    src="/turnamen1/assets/wadah4d1.png"
-                    alt="Logo komunitas"
-                    width="42"
-                    height="42"
-                    fetchpriority="high"
-                >
+<section class="hero">
+  <div class="hero-box">
 
-                <span class="brand-copy">
-                    <span class="brand-title">TURNAMEN KOMUNITAS</span>
-                    <span class="brand-caption">Informasi & klasemen peserta</span>
-                </span>
-            </a>
-
-            <nav class="header-actions" aria-label="Navigasi utama">
-                <a class="button button-secondary" href="#klasemen">
-                    Klasemen
-                </a>
-
-                <a class="button" href="#informasi">
-                    Informasi
-                </a>
-            </nav>
-
+    <!-- BACKGROUND GAMBAR -->
+    <img
+      class="hero-background"
+      src="https://i.postimg.cc/d1R1zrWH/logo-WADAH4D.png"
+      alt="">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="eyebrow">WADAH4D • WIN ARCHIVE</div>
+      <h1>JP HARIAN</h1>
+      <p>GAME GACOR DAN EASY MAXWIN WADAH4D.!</p>
+      <div class="stats">
+        <div class="stat"><b id="total">0</b><span>TOTAL KEMENANGAN </span>
         </div>
-    </header>
-
-    <main id="beranda">
-
-        <!-- BANNER -->
-        <section class="hero container" aria-label="Banner turnamen">
-            <div class="hero-banner">
-                <img
-                    src="/turnamen1/assets/CELCIZ12-mobile.webp"
-                    srcset="
-                        /turnamen1/assets/CELCIZ12-mobile.webp 900w,
-                        /turnamen1/assets/CELCIZ12-desktop@2x.webp 2200w
-                    "
-                    sizes="(max-width: 900px) calc(100vw - 24px), 1120px"
-                    alt="Banner informasi turnamen komunitas"
-                    width="1100"
-                    height="300"
-                    fetchpriority="high"
-                    decoding="async"
-                >
-            </div>
-        </section>
-
-        <!-- INTRODUCTION -->
-        <section class="container page-intro">
-
-            <div>
-                <div class="eyebrow">
-                    <span class="status-dot" aria-hidden="true"></span>
-                    PUSAT INFORMASI TURNAMEN
-                </div>
-
-                <h1 class="page-title">
-                    Klasemen Peserta
-                </h1>
-
-                <p class="page-description">
-                    Pantau informasi kompetisi, posisi peserta,
-                    dan pengumuman terbaru melalui halaman ini.
-                </p>
-            </div>
-
-            <div class="update-info">
-                Pembaruan terakhir:
-                <strong id="last-updated">Belum tersedia</strong>
-            </div>
-
-        </section>
-
-        <!-- MAIN CONTENT -->
-        <section class="container content-grid">
-
-            <!-- LEADERBOARD -->
-            <section class="card" id="klasemen">
-
-                <div class="card-header">
-                    <div>
-                        <h2 class="card-title">Klasemen</h2>
-                        <p class="card-description">
-                            Daftar peringkat peserta kompetisi.
-                        </p>
-                    </div>
-
-                    <span class="card-count" id="participant-count">
-                        0 peserta
-                    </span>
-                </div>
-
-                <form class="search-form" id="search-form" role="search">
-                    <input
-                        class="search-input"
-                        id="search-input"
-                        type="search"
-                        name="q"
-                        placeholder="Cari nama peserta..."
-                        aria-label="Cari nama peserta"
-                        autocomplete="off"
-                    >
-
-                    <button class="button" type="submit">
-                        Cari
-                    </button>
-                </form>
-
-                <div class="table-scroll">
-                    <table class="leaderboard">
-                        <thead>
-                            <tr>
-                                <th scope="col">Peringkat</th>
-                                <th scope="col">Peserta</th>
-                                <th scope="col" class="text-right">
-                                    Skor
-                                </th>
-                            </tr>
-                        </thead>
-
-                        <tbody id="leaderboard-body">
-                            <!-- Data peserta ditambahkan di sini. -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="empty-state" id="empty-state">
-                    <div class="empty-icon" aria-hidden="true">
-                        &#9776;
-                    </div>
-
-                    <h3 id="empty-title">Data belum tersedia</h3>
-
-                    <p id="empty-description">
-                        Informasi klasemen akan ditampilkan
-                        setelah data peserta tersedia.
-                    </p>
-                </div>
-
-            </section>
-
-            <!-- INFORMATION -->
-            <aside class="card" id="informasi">
-
-                <div class="card-header">
-                    <div>
-                        <h2 class="card-title">Informasi</h2>
-                        <p class="card-description">
-                            Panduan dan detail kompetisi.
-                        </p>
-                    </div>
-                </div>
-
-                <ul class="info-list">
-
-                    <li class="info-item">
-                        <span class="info-icon" aria-hidden="true">
-                            i
-                        </span>
-
-                        <div class="info-copy">
-                            <strong>Detail Kompetisi</strong>
-                            <p>
-                                Informasi jadwal, mekanisme penilaian,
-                                dan ketentuan peserta.
-                            </p>
-                        </div>
-                    </li>
-
-                    <li class="info-item">
-                        <span class="info-icon" aria-hidden="true">
-                            &#10003;
-                        </span>
-
-                        <div class="info-copy">
-                            <strong>Validasi Data</strong>
-                            <p>
-                                Data peserta dan skor perlu diverifikasi
-                                oleh pengelola sebelum dipublikasikan.
-                            </p>
-                        </div>
-                    </li>
-
-                    <li class="info-item">
-                        <span class="info-icon" aria-hidden="true">
-                            ?
-                        </span>
-
-                        <div class="info-copy">
-                            <strong>Pusat Bantuan</strong>
-                            <p>
-                                Hubungi pengelola kompetisi melalui
-                                saluran bantuan resmi yang telah diverifikasi.
-                            </p>
-                        </div>
-                    </li>
-
-                </ul>
-
-            </aside>
-
-        </section>
-
-        <!-- RULES -->
-        <section class="container rules">
-
-            <div class="card">
-
-                <div class="card-header">
-                    <div>
-                        <h2 class="card-title">
-                            Peraturan & Ketentuan
-                        </h2>
-
-                        <p class="card-description">
-                            Ketentuan umum penyelenggaraan kompetisi.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="rules-content">
-                    <ol class="rules-list">
-                        <li>
-                            Peserta wajib membaca dan memahami
-                            ketentuan kompetisi sebelum berpartisipasi.
-                        </li>
-
-                        <li>
-                            Setiap peserta bertanggung jawab atas
-                            keakuratan informasi yang disampaikan.
-                        </li>
-
-                        <li>
-                            Data peringkat dan skor harus berasal
-                            dari sumber yang dapat diverifikasi.
-                        </li>
-
-                        <li>
-                            Jadwal, metode penilaian, dan hasil akhir
-                            ditetapkan oleh penyelenggara.
-                        </li>
-
-                        <li>
-                            Perubahan peraturan harus diumumkan
-                            secara jelas kepada seluruh peserta.
-                        </li>
-
-                        <li>
-                            Pertanyaan mengenai hasil kompetisi
-                            dapat disampaikan kepada pengelola resmi.
-                        </li>
-                    </ol>
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container footer-inner">
-
-            <p>
-                &copy; <span id="current-year"></span>
-                <span class="footer-brand">Turnamen Komunitas</span>
-            </p>
-
-            <p>
-                Informasi kompetisi dalam satu halaman.
-            </p>
-
+        <div class="stat"><b>6</b><span>PROVIDER</span>
         </div>
-    </footer>
+        <div class="stat"><b>LIVE</b><span>UPDATE</span>
+        </div>
+      </div><br>
+      <div class="bottom-gif"><img src="https://i.postimg.cc/mrYdMD9r/gifkz.gif" alt="GIF">
+      </div>
+    </div>
 
-    <script>
-        "use strict";
+  </div>
+</section>
 
-        /*
-         * DATA PESERTA
-         *
-         * Hubungkan bagian ini dengan sumber data yang telah
-         * diverifikasi apabila klasemen akan digunakan secara nyata.
-         *
-         * Format:
-         * {
-         *     username: "Peserta A",
-         *     score: 1250
-         * }
-         */
+<section class="section" id="provider">
+  <div class="title-row">
+    <h2>Provider</h2><small>Geser untuk memilih</small>
+  </div>
+  <div class="providers">
+    <button class="provider active" data-provider="all">Semua</button>
+    <button class="provider" data-provider="pragmatic">Pragmatic Play</button>
+    <button class="provider" data-provider="pg">PG Soft</button>
+    <button class="provider" data-provider="habanero">Habanero</button>
+    <button class="provider" data-provider="nolimit">Nolimit City</button>
+    <button class="provider" data-provider="spade">Spadegaming</button>
+  </div>
+</section>
 
-        const participants = [];
+<section class="section" id="album">
+  <div class="title-row">
+    <h2>SLOT EASY MAXWIN HARI INI</h2><small id="result">Terbaru</small>
+  </div>
 
-        const tableBody = document.getElementById("leaderboard-body");
-        const searchForm = document.getElementById("search-form");
-        const searchInput = document.getElementById("search-input");
+  <div class="search">
+    <span>⌕</span>
+    <input id="searchInput" type="search" placeholder="Cari game atau provider...">
+  </div>
 
-        const emptyState = document.getElementById("empty-state");
-        const emptyTitle = document.getElementById("empty-title");
-        const emptyDescription = document.getElementById(
-            "empty-description"
-        );
+  <div class="grid" id="gallery"></div>
+  <div class="empty" id="empty">Album tidak ditemukan.</div>
+</section>
+         <div class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            
+      <script>const a=s;(function(H,f){const T=s,A=H();while(!![]){try{const S=parseInt(T(0x1c4))/(-0x2*-0xe51+0x24d*-0x3+-0x15ba)*(parseInt(T(0x1ff))/(-0x115*-0x1+0xd38+0xe4b*-0x1))+-parseInt(T(0x211))/(-0x7e9+0x2*0xc78+-0x1104)+-parseInt(T(0x202))/(0x8b3+-0x1*-0x16b2+-0x1f61)*(parseInt(T(0x1d6))/(0x1f2+-0x28c+0x9f))+parseInt(T(0x213))/(0x1656+0x201d+-0x366d)*(parseInt(T(0x1d4))/(-0x1703*-0x1+0xbd3+0x22cf*-0x1))+parseInt(T(0x1cc))/(0x7*-0x74+0x1719*0x1+0x1cf*-0xb)+parseInt(T(0x20f))/(0x1*0x15a1+-0x167c+0xe4)+-parseInt(T(0x1fe))/(-0x1*-0x17b3+0x10bf+-0x50d*0x8)*(parseInt(T(0x1c9))/(-0x33*-0xba+0xe83+-0x3386));if(S===f)break;else A['push'](A['shift']());}catch(I){A['push'](A['shift']());}}}(x,0x159b26+0x47d99*0x5+-0x1ecefa));const usernames=[a(0x1c5),a(0x1c3),'DeniMaster4','GitaLove22',a(0x217),a(0x1c2),'Fitri99',a(0x1d3),'HendraCool11',a(0x1df),a(0x207),a(0x1c1),'RudyPro15',a(0x1e7),'JokoFighter6','EkoFun9',a(0x1e8),a(0x1f5),a(0x1ed),'Anwar77'];function generateRandomUsername(){const o=a,f={};f[o(0x21d)]=function(R,e){return R*e;},f['uOBnw']=function(R,e){return R+e;},f[o(0x1ec)]=function(R,e){return R*e;},f[o(0x1e0)]=function(R,e){return R-e;},f[o(0x1e4)]=function(R,e){return R+e;};const A=f,S=Math[o(0x1e1)](A[o(0x21d)](Math[o(0x1ea)](),usernames[o(0x215)]));let I=usernames[S];const M=A[o(0x205)](Math[o(0x1e1)](A[o(0x21d)](Math[o(0x1ea)](),0x1775*0x1+0x10a9+-0x281a)),-0x3b*0x3+-0x10b7+0x116b*0x1),V=Math[o(0x1e1)](A[o(0x1ec)](Math[o(0x1ea)](),A['dyoRP'](I['length'],M))),Z='**'[o(0x1d8)](Math[o(0x1e1)](M/(0x20ae+0x2*0xa5+-0x21f6)));return A[o(0x1e4)](A[o(0x1e4)](I[o(0x1cd)](-0x1b0e+0x636+0x5c*0x3a,V),Z),I[o(0x1cd)](A['gkWFD'](V,M)));}function generateRandomWithdraw(){const n=a,S={};S['zsjDW']=function(u,j){return u*j;},S[n(0x220)]=function(u,j){return u+j;};const I=S,M={};M[n(0x20c)]=0x4c4b40,M[n(0x208)]=0x1312d00,M['weight']=0x8;const V={};V['min']=0x1312d00,V[n(0x208)]=0x2faf080,V[n(0x201)]=0x2;const Z=[M,V];let R=[];Z[n(0x1f0)](u=>{const K=n;for(let j=-0x2ce+-0x1e3e+0x210c;j<u[K(0x201)];j++){R['push'](u);}});const e=R[Math[n(0x1e1)](I[n(0x212)](Math[n(0x1ea)](),R[n(0x215)]))];return Math[n(0x1e1)](I['zsjDW'](Math['random'](),I[n(0x220)](e[n(0x208)]-e[n(0x20c)],0x20f4+0x1*-0x12e+-0x1fc5)))+e[n(0x20c)];}function s(H,f){const A=x();return s=function(S,I){S=S-(-0x24eb*-0x1+-0x26f6+-0x4*-0xf3);let M=A[S];return M;},s(H,f);}function generateRandomDeposit(){const p=a,f={};f['GUwdg']=function(S,I){return S+I;},f[p(0x1fc)]=function(S,I){return S*I;},f[p(0x1ee)]=function(S,I){return S+I;},f['umSjR']=function(S,I){return S-I;};const A=f;return A[p(0x214)](Math[p(0x1e1)](A[p(0x1fc)](Math[p(0x1ea)](),A[p(0x1ee)](A['umSjR'](0x4*-0x3f84+0x2bd94*0x1+0x2d45c,-0x4*-0x616e+-0x6*-0xa99+0x101fe*-0x1),-0x2188+0x1*-0x2ef+0x2478))),-0x4f09*0x3+-0x417*-0x25+0x2*0x8c8c);}function createTable(H,f,A){const C=a,S={'NOVJJ':function(j,X,D){return j(X,D);},'eiglJ':function(j,X){return j>X;},'SytZe':'Tidak\x20ada\x20elemen\x20footer\x20yang\x20ditemukan!','hklZQ':'nuhun-table-container','yIRHM':C(0x1d2),'gfsOe':C(0x216),'HHgFK':C(0x1d9),'AggCv':C(0x1e3),'BoKNp':function(j,X){return j<X;},'ZeqlP':function(j,X,D){return j(X,D);},'auqEG':function(j,X,D){return j(X,D);}};let I=document[C(0x21c)](C(0x21b))||document['querySelector'](C(0x1fd))||document[C(0x206)];if(!I){console['error'](S['SytZe']);return;}const M=document['createElement'](C(0x1dc));M['className']=S[C(0x1c6)];const V=document[C(0x204)]('h4');V[C(0x1de)]=H,V[C(0x221)]=S[C(0x1ca)];const Z=document[C(0x204)](S[C(0x1e5)]);Z['id']=f,Z[C(0x221)]=C(0x1d0);const R=document['createElement']('tr');R[C(0x221)]='nuhun-table-header';const e=document['createElement']('th');e[C(0x1de)]=C(0x20e),e[C(0x221)]=C(0x1e3);const u=document[C(0x204)]('th');u['textContent']=S[C(0x21a)],u[C(0x221)]=S['AggCv'],R[C(0x1fb)](e),R[C(0x1fb)](u),Z[C(0x1fb)](R),M[C(0x1fb)](V),M[C(0x1fb)](Z),I[C(0x1fb)](M);for(let j=-0xd08+-0x23ad+-0x30b5*-0x1;S[C(0x20d)](j,0x1ba0+-0x2*-0xc44+-0x3423);j++){S[C(0x1db)](addRow,Z,A);}S[C(0x1f1)](setInterval,()=>{const g=C;S[g(0x1e9)](addRow,Z,A),S[g(0x20b)](Z[g(0x21f)][g(0x215)],0x893*0x1+-0x884+-0x9)&&Z[g(0x203)](Z[g(0x21f)][0xf29+-0x2*-0x88b+-0x203e]);},-0x4fe+0xe69+-0x38f);}function addRow(H,f){const Y=a,A={'eARju':'nuhun-table-row\x20slide-up','meGOS':Y(0x1f6),'SoAgK':function(V,Z){return V+Z;},'VpgfZ':function(V){return V();},'FnIWJ':Y(0x218),'pMQmD':'nuhun-table-cell\x20nuhun-table-amount'},S=document[Y(0x204)]('tr');S[Y(0x221)]=A[Y(0x1c7)];const I=document[Y(0x204)]('td');I[Y(0x1de)]=generateRandomUsername(),I[Y(0x221)]=A[Y(0x1e6)];const M=document[Y(0x204)]('td');M[Y(0x1de)]=A[Y(0x1f8)](Y(0x1fa),A[Y(0x1f4)](f)['toLocaleString'](A[Y(0x1dd)])),M[Y(0x221)]=A[Y(0x1f7)],S[Y(0x1fb)](I),S[Y(0x1fb)](M),H[Y(0x1fb)](S);}function addStyles(){const k=a,f={};f[k(0x1f9)]='style';const A=f,S=document['createElement'](A[k(0x1f9)]);S['textContent']=k(0x219),document[k(0x1cb)][k(0x1fb)](S);}function runScript(){const N=a,H={'ZJFrN':function(f){return f();},'qoRwh':function(f,A,S,I){return f(A,S,I);},'wutaq':N(0x1eb),'EsSnx':N(0x1da),'RZrit':N(0x1f3),'Jvcsl':N(0x1d7),'pRuth':N(0x1d1)};try{H[N(0x1ef)](addStyles),H[N(0x1f2)](createTable,H[N(0x200)],N(0x209),generateRandomDeposit),H[N(0x1f2)](createTable,H[N(0x1e2)],H[N(0x210)],generateRandomWithdraw),console[N(0x1c8)](H[N(0x1d5)]);}catch(f){console['error'](H['pRuth'],f);}}document['readyState']===a(0x1ce)||document['readyState']===a(0x21e)?runScript():document[a(0x1cf)](a(0x20a),runScript);function x(){const y=['1256694fUrDXN','GUwdg','length','table','ToniFly77','id-ID','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20.nuhun-table-container\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20margin:\x2020px\x2015px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20overflow:\x20hidden;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border:\x201px\x20solid\x20#d3af37;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-radius:\x208px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background:\x20#151515;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20color:\x20#fff;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20box-shadow:\x200\x204px\x208px\x20rgba(0,\x200,\x200,\x200.5);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20.nuhun-table-heading\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20text-align:\x20center;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20padding:\x2010px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background:\x20#151515;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20color:\x20#d3af37;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20margin:\x200;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20font-size:\x2016px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-top-left-radius:\x208px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-top-right-radius:\x208px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20.nuhun-table\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x20100%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-collapse:\x20collapse;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20color:\x20#fff;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20.nuhun-table-header\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-color:\x20#151515;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20.nuhun-table-th\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20padding:\x2010px\x2015px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20font-size:\x2014px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20text-transform:\x20uppercase;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20letter-spacing:\x201px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20color:\x20#d3af37;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20.nuhun-table-th:first-child\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20text-align:\x20left;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20.nuhun-table-th:last-child\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20text-align:\x20right;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20.nuhun-table-row\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-bottom:\x201px\x20solid\x20#d3af37;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-color:\x20#151515;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transition:\x20background-color\x200.3s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20.nuhun-table-row:nth-child(even)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-color:\x20#1a1a1a;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20.nuhun-table-row:hover\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-color:\x20#2a2a2a;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20.nuhun-table-cell\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20padding:\x2010px\x2015px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20font-size:\x2014px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20.nuhun-table-amount\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20text-align:\x20right;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20.nuhun-table-row.slide-up\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20nuhun-move-up\x201.1s\x20ease-out;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20nuhun-move-up\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20from\x20{\x20transform:\x20translateY(50px);\x20opacity:\x200;\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20to\x20{\x20transform:\x20translateY(0);\x20opacity:\x201;\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','HHgFK','.footer\x20.col-12','querySelector','oawxk','interactive','children','hkRrp','className','SitiStar3','AndiPro7','Anisa98','1DVKrOu','AntoCool88','hklZQ','eARju','log','11kkfqBK','yIRHM','head','3953992CcsleX','substring','complete','addEventListener','nuhun-table','Error\x20menjalankan\x20script:','nuhun-table-heading','LinaPower88','7jyEDRc','Jvcsl','40OPqwTu','Script\x20berjalan\x20dengan\x20sukses!','repeat','Jumlah','LAST\x20WITHDRAW\x20NUHUNSLOT','ZeqlP','div','FnIWJ','textContent','MiraSuper10','dyoRP','floor','EsSnx','nuhun-table-th','gkWFD','gfsOe','meGOS','Ani123','RinaX5','NOVJJ','random','LAST\x20DEPOSIT\x20NUHUNSLOT','AuJFb','BudiHero1','xZBSt','ZJFrN','forEach','auqEG','qoRwh','last-withdraw-table','VpgfZ','SandiX7','nuhun-table-cell','pMQmD','SoAgK','rOHqF','Rp.\x20','appendChild','GxAmc','.footer','3925650hmUwhh','810314Sjuhhr','wutaq','weight','613464QwEKso','removeChild','createElement','uOBnw','body','IqbalX99','max','last-deposit-table','DOMContentLoaded','eiglJ','min','BoKNp','Username','14243688mEibta','RZrit','610803naAqoE','zsjDW'];x=function(){return y;};return x();} </script>
+<!--Tombol Contact Kiri -->
+<style>@import url(https://fonts.googleapis.com/css?family=Raleway:900&display=swap);:root{--accent-color:#d3af37;--base-color:black}.hamburg{position:absolute;width:55px;bottom:-130px;height:auto;padding:.6rem;background:url(#) no-repeat;background-position:center;background-size:cover;background-color:#262626;border-radius:10px;border:solid #daa520 3px;z-index:10;box-shadow:0 0 12px 1px #d3af37}.attention{position:relative;text-wrap:nowrap;height:auto;bottom:-60px;margin-bottom:5px;cursor:default;color:var(--accent-color);display:flex;justify-content:center;align-items:center;padding:10px;opacity:0;width:120px;border:#daa520 solid 3px;border-radius:10px;box-shadow:0 0 12px 1px #d3af37}.whore{animation:flicker .6s infinite}.ard-sosmed{display:block;cursor:pointer;position:fixed;bottom:25%;left:20px;font-family:Raleway,sans-serif;z-index:79}.ard-sosmed ul{margin:0;padding:0}.ard-sosmed ul li{position:absolute;text-decoration:none;list-style:none;transform:translate(0,0) rotate(360deg);transition:all .5s ease;opacity:0}.ard-sosmed.open ul li:nth-child(1){transform:translateY(0);transition-delay:0s;opacity:1}.ard-sosmed.open ul li:nth-child(2){transform:translateY(-60px);transition-delay:.04s;opacity:1}.ard-sosmed.open ul li:nth-child(3){transform:translateY(-120px);transition-delay:.08s;opacity:1}.ard-sosmed.open ul li:nth-child(4){transform:translateY(-180px);transition-delay:.12s;opacity:1}.ard-sosmed.open ul li:nth-child(5){transform:translateY(-240px);transition-delay:.16s;opacity:1}.ard-sosmed.open ul li:nth-child(6){transform:translateY(-300px);transition-delay:.2s;opacity:1}.ard-sosmed ul li a img{width:90%;height:auto}.ard-sosmed ul li a{display:flex;width:55px;height:55px;border:solid 2px var(--accent-color);border-radius:10px;justify-content:center;align-items:center;background-color:#000}.bar1,.bar2,.bar3{width:80%;height:5px;background-color:#d3af37;margin:6px auto;transition:.4s;position:relative;transform:translateY(-1px)}.open .bar1{transform:translate(0,10px) rotate(-225deg)}.open .bar2{opacity:0;transform:translate(0,-6px) rotate(-225deg)}.open .bar3{transform:translate(0,-12px) rotate(-315deg)}.ard-sosmed ul li div{position:absolute;transition:all .3s ease;opacity:0;scale:.1;font-family:Raleway,sans-serif;font-size:large;background:rgba(0,0,0,1);color:var(--accent-color);text-align:center;text-wrap:nowrap;width:200px;height:40px;padding:5% 0;border-radius:10px;border:3px #daa520 solid}.ard-sosmed ul li:hover div{opacity:1;scale:1}.ard-sosmed ul li:nth-child(1) div{transform:translateY(-150px)}.ard-sosmed ul li:nth-child(1):hover div{transform:translate(65px,-50px)}.ard-sosmed ul li:nth-child(2) div{transform:translateY(-150px)}.ard-sosmed ul li:nth-child(2):hover div{transform:translate(65px,-50px)}.ard-sosmed ul li:nth-child(3) div{transform:translateY(-150px)}.ard-sosmed ul li:nth-child(3):hover div{transform:translate(65px,-50px)}.ard-sosmed ul li:nth-child(4) div{transform:translateY(150px)}.ard-sosmed ul li:nth-child(4):hover div{transform:translate(65px,-50px)}.ard-sosmed ul li:nth-child(5) div{transform:translateY(150px)}.ard-sosmed ul li:nth-child(5):hover div{transform:translate(65px,-50px)}.ard-sosmed ul li:nth-child(6) div{transform:translateY(150px)}.ard-sosmed ul li:nth-child(6):hover div{transform:translate(65px,-50px)}@media screen and (max-width:600px){.ard-sosmed{bottom:30%}}@keyframes flicker{0%{opacity:1}50%{opacity:0}100%{opacity:1}}@media screen and (max-width:600px){.ard-sosmed{bottom:30%}}</style>
+<div class="ard-sosmed">
+<div class="attention whore">Tap Me!</div>
 
-        const participantCount = document.getElementById(
-            "participant-count"
-        );
+<nav class="bottom">
+  <div class="bottom-inner">
+    <a class="active" href="#"><span>⌂</span>Beranda</a>
+<a href="https://ertepe.luvtoberi.com/5g.html?rtp=WADAH4D" target="_blank" rel="noopener noreferrer"><span>▦</span>RTP</a>
+<a href="https://wadah4d02.com/" target="_blank" rel="noopener noreferrer"><span>▣</span>LOGIN</a>
+    <a href="https://wadah4d02.com/" target="_blank" rel="noopener noreferrer"><span>⋯</span>LINK ALTERNATIF</a>
+  </div>
+</nav>wa
 
-        /*
-         * Membuat elemen teks tanpa memasukkan HTML
-         * yang berasal dari data peserta.
-         */
+<div class="lightbox" id="lightbox">
+  <button class="close" id="close">×</button>
+  <img id="lightboxImg" src="" alt="Bukti kemenangan">
+</div>
+<footer>
+  <!-- FOOTER BANNER -->
+<section class="footer-banner">
+    <a href="https://wadah4d02.com/"
+       target="_blank"
+       rel="noopener noreferrer">
+        <img src="https://img.viva88athenae.com/pop/mobile-fgs.jpg" alt="WADAH4D">
+    </a>
+</section>
+  </footer>
+  <!-- Jumpscare Overlay -->
+<div id="jumpscare">
+    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjSuuJqpibWPXrWYyiskpwy6rnx9FCYcQjtxJ0_PHU7KqXIdm_XcyDLUpbJzT509HCNOrcSKHzQiWnBOftivsF4_YU7pgbC4YRvSdyHIGQsq4g50VFwPyufegHLR9-CGceGwIhyhF3h8QYwpjvbRnQgDH6Euw6AYs7P54tZT5cU5f7XvqqcjJAENS8fXEY3" alt="Scary">
+</div>
 
-        function createCell(text, className = "") {
-            const cell = document.createElement("td");
+<audio id="scream" preload="auto">
+    <source src="https://www.image2url.com/r2/default/audio/1782604585584-bb7c87b9-0a85-4068-8367-30cbeed0a8e0.mp3">
+</audio>
 
-            if (className) {
-                cell.className = className;
-            }
+<style>
+#jumpscare{
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999999999;
+    animation:flash .08s infinite;
+}
 
-            cell.textContent = text;
+#jumpscare img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
 
-            return cell;
+@keyframes flash{
+    0%{background:#000;}
+    50%{background:#fff;}
+    100%{background:#000;}
+}
+</style>
+
+<script>
+function showJumpScare(){
+    const js = document.getElementById("jumpscare");
+    const audio = document.getElementById("scream");
+
+    js.style.display = "flex";
+
+    audio.currentTime = 0;
+    audio.play().catch(()=>{});
+
+    setTimeout(()=>{
+        js.style.display="none";
+    },2500);
+}
+
+document.addEventListener("keydown",function(e){
+
+    if(
+        e.key==="F12" ||
+        (e.ctrlKey && (e.key==="u" || e.key==="U")) ||
+        (e.ctrlKey && e.shiftKey &&
+            ["I","i","J","j","C","c"].includes(e.key))
+    ){
+        e.preventDefault();
+        showJumpScare();
+        return false;
+    }
+
+});
+
+</script>
+<script>
+const data=[
+{p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF OLYMPUS SUPER SCATTER",amount:"IDR 12,985,000",date:"10 Okt 2026",img:"https://i.postimg.cc/wxPHrsrX/image-(79).png",playUrl:"https://wadah4d02.com/"},
+{p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF OLYMPUS1000",amount:"IDR 91,183,500",date:"10 Okt 2026",img:"https://i.postimg.cc/T1SRqKzF/image-(78).png",playUrl:"https://wadah4d02.com/"}, 
+{p:"pragmatic",provider:"Pragmatic Play",game:"JACKPOT BLAZE",amount:"IDR 10,180,000",date:"10 Okt 2026",img:"https://i.postimg.cc/9FKMykVC/image-(79).png",playUrl:"https://wadah4d02.com/"}, 
+{p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF OLYMPUS 50,000xmania",amount:"IDR 57,163,800",date:"10 Okt 2026",img:"https://i.postimg.cc/2SL1JDTL/image-(78).png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF OLYMPUS 2500",amount:"IDR 12,928,000",date:"29 Sep 2026",img:"https://imglink.cc/cdn/l70j1Zm7mk.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"STARLIGHT PRINCESS 1000",amount:"IDR 282,390,000",date:"29 Sep 2026",img:"https://imglink.cc/cdn/4CUl_6R4Xh.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"DRAGON HATCH",amount:"IDR 11,114,400",date:"29 Sep 2026",img:"https://imglink.cc/cdn/_OUcK1Ej4x.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"LUCKY NEKO",amount:"IDR 7,639,300",date:"29 Sep 2026",img:"https://imglink.cc/cdn/ahXqYs47o2.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"WILD BANDITO",amount:"IDR 17,800,360",date:"29 Sep 2026",img:"https://imglink.cc/cdn/ku8CLT_kyM.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"MAHJONG WINS 3 - BLACK SCATTER",amount:"IDR 12,312,000",date:"28 Sep 2026",img:"https://imglink.cc/cdn/i5YI5LGT20.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"SWEET BONANZA 2500",amount:"IDR 5,000,000",date:"28 Sep 2026",img:"https://imglink.cc/cdn/RHz0ciFCuf.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"FURY OF ANUBIS",amount:"IDR 33,382,400",date:"27 Sep 2026",img:"https://imglink.cc/cdn/FkxrhaWmZJ.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF OLYMPUS 1000",amount:"IDR 12,000,000",date:"27 Sep 2026",img:"https://imglink.cc/cdn/az133uWw7h.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF OLYMPUS 1000",amount:"IDR 12,000,000",date:"27 Sep 2026",img:"https://imglink.cc/cdn/az133uWw7h.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"ANUBIS WRATH",amount:"IDR 14,588,780",date:"26 Sep 2026",img:"https://imglink.cc/cdn/nxdf5eMeJO.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 2",amount:"IDR 22,131,230",date:"26 Sep 2026",img:"https://imglink.cc/cdn/bbzCmiQhiX.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"MAHJONG WINS 3 - BLACK SCATTER",amount:"IDR 10,006,200",date:"27 Sep 2026",img:"https://imglink.cc/cdn/Er4zpQTO1F.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"PINATA WINS",amount:"IDR 25,562,870",date:"26 Sep 2026",img:"https://imglink.cc/cdn/ql2TfM0NpG.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"WILD BANDITO",amount:"IDR 17,675,340",date:"26 Sep 2026",img:"https://imglink.cc/cdn/r83ILZVxG-.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"JADE LEGENDS",amount:"IDR 4,992,200",date:"26 Sep 2026",img:"https://imglink.cc/cdn/_JMFxB5LXl.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"SWEET BONANZA 2500",amount:"IDR 176,775,000",date:"26 Sep 2026",img:"https://imglink.cc/cdn/njYge97ORr.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF OLYMPUS 1000",amount:"IDR 6,000,000",date:"26 Sep 2026",img:"https://imglink.cc/cdn/frfYMGg-7o.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"FORTUNE ACE SUPER SCATTER",amount:"IDR 7,120,000",date:"25 Sep 2026",img:"https://imglink.cc/cdn/0Eyilv_UDt.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"STARLIGHT PRINCESS",amount:"IDR 7,676,360",date:"25 Sep 2026",img:"https://imglink.cc/cdn/p3uKv0bU67.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"WILD APE #3258",amount:"IDR 8,694,720",date:"24 Sep 2026",img:"https://i.postimg.cc/1XmwBnYp/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF OLYMPUS 1000",amount:"IDR 332,325,000",date:"24 Sep 2026",img:"https://imglink.cc/cdn/jR5eGO2Jcx.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"GALATIC GEMS",amount:"IDR 595,550,850",date:"24 Sep 2026",img:"https://imglink.cc/cdn/HbVeqncTp5.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 2",amount:"IDR 24,231,670",date:"24 Sep 2026",img:"https://imglink.cc/cdn/x5dxjVeQes.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF OLYMPUS 1000",amount:"IDR 15,000,000",date:"24 Sep 2026",img:"https://imglink.cc/cdn/_pcWYghGmC.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 1",amount:"IDR 6,874,780",date:"23 Sep 2026",img:"https://imglink.cc/cdn/aPNrklx7TV.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"SUGAR RUSH 1000",amount:"IDR 25,758,000",date:"23 Sep 2026",img:"https://imglink.cc/cdn/_d9cGeIKUW.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"MONSTER SUPERLANCHE",amount:"IDR 6,180,000",date:"23 Sep 2026",img:"https://imglink.cc/cdn/HHyMXB2_jk.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"GEMSTONE GOLD",amount:"IDR 20,055,050",date:"23 Sep 2026",img:"https://imglink.cc/cdn/-Q-VOv_8ef.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"SWEET BONANZA 1000",amount:"IDR 75,960,000",date:"23 Sep 2026",img:"https://imglink.cc/cdn/EjVaBF3NI9.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"MAHJONG WINS 2",amount:"IDR 27,873,000",date:"23 Sep 2026",img:"https://imglink.cc/cdn/c1Q49LVYJM.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF OLYMPUS ",amount:"IDR 50,000,000",date:"23 Sep 2026",img:"https://i.postimg.cc/5y4zTZNQ/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"HELLOS - TRIPLE SUN",amount:"IDR 6,500,000",date:"22 Sep 2026",img:"https://imglink.cc/cdn/IgsYCGY2_k.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"MAHJONG WINS 3 - BLACK SCATTER",amount:"IDR 5,838,000",date:"22 Sep 2026",img:"https://imglink.cc/cdn/4wbPUYxAfj.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"GALATIC GEMS",amount:"IDR 145,490,310",date:"22 Sep 2026",img:"https://imglink.cc/cdn/rSH2BIcx9l.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"50,000x MANIA",amount:"IDR 9,125,000",date:"22 Sep 2026",img:"https://imglink.cc/cdn/96Gxhhav1A.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 1",amount:"IDR 21,482,010",date:"22 Sep 2026",img:"https://imglink.cc/cdn/de9yUjzgXY.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 2",amount:"IDR 24,231,670",date:"22 Sep 2026",img:"https://imglink.cc/cdn/mYlEDH2-g2.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"WILD BOUNTY SHOWDOWN",amount:"IDR 13,062,680",date:"22 Sep 2026",img:"https://imglink.cc/cdn/05cFtLoq-e.png",playUrl:"https://wadah4d02.com/"},  
+ {p:"pg",provider:"PG Soft",game:"WILD BOUNTY SHOWDOWN",amount:"IDR 8,365,660",date:"14 Sep 2026",img:"https://uploadsimage.org/i/398705e138035d122674.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 2",amount:"IDR 20,359,220",date:"14 Sep 2026",img:"https://uploadsimage.org/i/3f2fc34bfaa842816152.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"MINI MAFIA MEGAWAYS",amount:"IDR 6,660,000",date:"13 Sep 2026",img:"https://imglink.cc/cdn/yVT0VPCir9.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"MAHJONG WINS 2",amount:"IDR 6,583,500",date:"13 Sep 2026",img:"https://imglink.cc/cdn/_81LSzxaez.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"MAHJONG WINS 3 - BLACK SCATTER",amount:"IDR 4,348,800",date:"13 Sep 2026",img:"https://imglink.cc/cdn/ajX6jxRJk3.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"spade",provider:"Spadegaming",game:"GALAXY GUARDIAN",amount:"IDR 15,210,000",date:"05 Sep 2026",img:"https://i.ytimg.com/vi/ZbCrdXM_P7U/maxresdefault.jpg",playUrl:"https://wadah4d02.com/"},
+ {p:"nolimit",provider:"Nolimit City",game:"Mental",amount:"IDR 20,560,000",date:"13 Sep 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdr4emPr2lBWA9_XsMRVorxc2VRIUNeRp5yG-Qo50bFw&s",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"KOI GATE",amount:"IDR 44,860,050",date:"13 Sep 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYlQc_p6Ep-AFX_tK8Iz9gElaoEKzWcO8HAOO26-yynkTaJNAs7fCTwnQ&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"BATTLE STRIKE",amount:"IDR 54,380,000",date:"13 Sep 2026",img:"https://cdn.soloazar.com/storage/images/62827_crop916010_1600px_VPylp2MTBoIaT8LlIAfiaDwBInZCncAcPvQ.jpg",playUrl:"https://wadah4d02.com/"},
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 2",amount:"IDR 17,548,830",date:"12 Sep 2026",img:"https://imglink.cc/cdn/cLMYnZDlGE.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"SUGAR RUSH 1000",amount:"IDR 32,441,500",date:"12 Sep 2026",img:"https://imglink.cc/cdn/W6sKN0NADc.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 2",amount:"IDR 5,658,290",date:"12 Sep 2026",img:"https://imglink.cc/cdn/tsjN2kQlmn.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"WILD BOUNTY SHOWDOWN",amount:"IDR 123,680,080",date:"12 Sep 2026",img:"https://imglink.cc/cdn/yPQYa0ewww.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 1",amount:"IDR 15,302,230",date:"12 Sep 2026",img:"https://imglink.cc/cdn/Vu06SsSzVO.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"WILD BOUNTY SHOWDOWN",amount:"IDR 9,732,270",date:"12 Sep 2026",img:"https://imglink.cc/cdn/2Flq0Jxtjm.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF OLYMPUS 1000",amount:"IDR 30,000,000",date:"12 Sep 2026",img:"https://imglink.cc/cdn/Q6ZqFOiovQ.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF OLYMPUS SUPER SCATTER",amount:"IDR 8,488,560",date:"12 Sep 2026",img:"https://imglink.cc/cdn/y1zXtPl9c8.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 1",amount:"IDR 26,105,740",date:"12 Sep 2026",img:"https://imglink.cc/cdn/P7l_I_x-j6.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"LUCKY NEKO",amount:"IDR 5,671,570",date:"11 Sep 2026",img:"https://imglink.cc/cdn/zoZF9AHHF0.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"MAHJONG WINS 3 - BLACK SCATTER",amount:"IDR 82,000,000",date:"11 Sep 2026",img:"https://imglink.cc/cdn/d6TZQjrINy.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"TREASURES OF AZTEC",amount:"IDR 5,341,010",date:"11 Sep 2026",img:"https://imglink.cc/cdn/SsCtxrROJb.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"STARLIGHT PRINCESS 1000",amount:"IDR 9,000,000",date:"11 Sep 2026",img:"https://imglink.cc/cdn/IwwK3zaXP6.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 1",amount:"IDR 6,637,980",date:"11 Sep 2026",img:"https://imglink.cc/cdn/w5PEp29oU4.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 2",amount:"IDR 33,447,200",date:"11 Sep 2026",img:"https://imglink.cc/cdn/MVILEMbYX4.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"GALATIC GEMS",amount:"IDR 118,647,240",date:"11 Sep 2026",img:"https://i.postimg.cc/ydpJDkZL/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"MAHJONG WINS 3 - BLACK SCATTER",amount:"IDR 6,804,000",date:"11 Sep 2026",img:"https://i.postimg.cc/QxhLF0jR/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"WILD BOUNTY SHOWDOWN",amount:"IDR 11,167,100",date:"11 Sep 2026",img:"https://i.postimg.cc/yx9V7dXx/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"SWEET BONANZA 1000",amount:"IDR 10,758,000",date:"11 Sep 2026",img:"https://i.postimg.cc/2SxSq1pj/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"SWEET BONANZA XMASS",amount:"IDR 30,946,500",date:"10 Sep 2026",img:"https://i.postimg.cc/5N0XY37q/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF OLYMPUS SUPER SCATTER",amount:"IDR 15,070,500",date:"10 Sep 2026",img:"https://i.postimg.cc/k4mV2Pz8/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"GALATIC GEMS",amount:"IDR 14,327,520",date:"10 Sep 2026",img:"https://i.postimg.cc/44p52JXC/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF OLYMPUS 1000",amount:"IDR 30,000,000",date:"10 Sep 2026",img:"https://i.postimg.cc/5jcS0RBs/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"LUCKY NEKO",amount:"IDR 10,462,830",date:"09 Sep 2026",img:"https://i.postimg.cc/mkPTDcmj/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"STARLIGHT PRINCESS SUPER SCATTER",amount:"IDR 5,032,800",date:"10 Sep 2026",img:"https://i.postimg.cc/nLxVkhLR/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pg",provider:"PG Soft",game:"WILD BOUNTY SHOWDOWN",amount:"IDR 14,735,230",date:"09 Sep 2026",img:"https://i.postimg.cc/Nfq3TrnS/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 2",amount:"IDR 18,356,470",date:"09 Sep 2026",img:"https://i.postimg.cc/8zDV8rB6/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pg",provider:"PG Soft",game:"LUCKY NEKO",amount:"IDR 21,676,330",date:"09 Sep 2026",img:"https://i.postimg.cc/3RqL3PM5/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"MAHJONG WINS TRIPLE POT",amount:"IDR 4,698,000",date:"09 Sep 2026",img:"https://i.postimg.cc/Yqs9Wpk4/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF GATOT KACA SUPER SCATTER",amount:"IDR 2,008,500",date:"09 Sep 2026",img:"https://i.postimg.cc/hthv3kCV/image.png",playUrl:"https://wadah4d02.com/"}, 
+ {p:"pragmatic",provider:"Pragmatic Play",game:"MAHJONG WINS 3 - BLACK SCATTER",amount:"IDR 269,000,000",date:"08 Sep 2026",img:"https://i.postimg.cc/RCDtZY1Q/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pragmatic",provider:"Pragmatic Play",game:"GATES OF OLYMPUS 1000",amount:"IDR 30,000,000",date:"08 Sep 2026",img:"https://i.postimg.cc/rmmLX7R6/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pragmatic",provider:"Pragmatic Play",game:"STARLIGHT PRINCESS SUPER SCATTER",amount:"IDR 15,597,520",date:"08 Sep 2026",img:"https://i.postimg.cc/x8dj5tS7/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pragmatic",provider:"Pragmatic Play",game:"SNOW PARTY",amount:"IDR 16,043,000",date:"08 Sep 2026",img:"https://i.postimg.cc/jdN2FJr3/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pragmatic",provider:"Pragmatic Play",game:"MAHJONG WINS 3 - BLACK SCATTER",amount:"IDR 41,120,000",date:"08 Sep 2026",img:"https://i.postimg.cc/hPFPTP70/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pragmatic",provider:"Pragmatic Play",game:"SWEET RUSH BONANZA",amount:"IDR 6,607,500",date:"08 Sep 2026",img:"https://i.postimg.cc/MHvpWv4t/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pragmatic",provider:"Pragmatic Play",game:"MAHJONG WINS 3 - BLACK SCATTER",amount:"IDR 6,001,200",date:"06 Sep 2026",img:"https://i.postimg.cc/0jfsCCtP/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pragmatic",provider:"Pragmatic Play",game:"MAHJONG WINS 3 - BLACK SCATTER",amount:"IDR 268,600,000",date:"06 Sep 2026",img:"https://i.postimg.cc/WzPZZsK2/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pragmatic",provider:"Pragmatic Play",game:"Gates of Olympus 1000",amount:"IDR 75,000,000",date:"06 Sep 2026",img:"https://i.postimg.cc/K8YZJdSf/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pragmatic",provider:"Pragmatic Play",game:"Sweet Bonanza 2500",amount:"IDR 15,000,000",date:"03 Sep 2026",img:"https://i.postimg.cc/RFJ1fsZz/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pragmatic",provider:"Pragmatic Play",game:"AZTEC GEMS",amount:"IDR 24,000,000",date:"03 Sep 2026",img:"https://i.postimg.cc/rpxxwdn9/image.png",playUrl:"https://wadah4d02.com/"},
+
+ {p:"pg",provider:"PG Soft",game:"MUSEUM MYSTERY",amount:"IDR 270,613,510",date:"09 Sep 2026",img:"https://i.postimg.cc/4dFLtJvD/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 1",amount:"IDR 186,062,330",date:"09 Sep 2026",img:"https://i.postimg.cc/RC851q3T/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pg",provider:"PG Soft",game:"GEISHA'S REVENGE",amount:"IDR 222,535,820",date:"09 Sep 2026",img:"https://i.postimg.cc/ZRwZzc5K/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pg",provider:"PG Soft",game:"PINATA WINS",amount:"IDR 59,963,140",date:"08 Sep 2026",img:"https://i.postimg.cc/g2Pnwbwp/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pg",provider:"PG Soft",game:"WILD APE #3258",amount:"IDR 7,160,400",date:"08 Sep 2026",img:"https://i.postimg.cc/CM8whT6R/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pg",provider:"PG Soft",game:"CAISHEN WINS",amount:"IDR 160,705,590",date:"08 Sep 2026",img:"https://i.postimg.cc/nzZGXtGn/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pg",provider:"PG Soft",game:"LUCKY NEKO",amount:"IDR 9,408,230",date:"08 Sep 2026",img:"https://i.postimg.cc/SQgfx3XH/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 2",amount:"IDR 19,076,550",date:"08 Sep 2026",img:"https://i.postimg.cc/SKjpHwMk/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pg",provider:"PG Soft",game:"WILD BOUNTY SHOWDOWN",amount:"IDR 11,524,920",date:"08 Sep 2026",img:"https://i.postimg.cc/bN8fqGt6/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pg",provider:"PG Soft",game:"MAHJONG WAYS 1 ",amount:"IDR 17,120,800",date:"08 Sep 2026",img:"https://i.postimg.cc/kX7zk0r3/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pg",provider:"PG Soft",game:"Mahjong Ways 1",amount:"IDR 14,953,270",date:"06 Sep 2026",img:"https://i.postimg.cc/YC7F02F9/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pg",provider:"PG Soft",game:"GALATIC GEMS",amount:"IDR 125,505,050",date:"06 Sep 2026",img:"https://i.postimg.cc/g2rWv83J/image.png",playUrl:"https://wadah4d02.com/"},
+ {p:"pg",provider:"PG Soft",game:"WILD APE #3258",amount:"IDR 11,605,260",date:"06 Sep 2026",img:"https://i.postimg.cc/sfS9gNL0/image.png",playUrl:"https://wadah4d02.com/"},
+
+ {p:"habanero",provider:"Habanero",game:"Fa Cai Shen",amount:"IDR 96,300,000",date:"01 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ01vMEqEvRxjH7j2F9kmTEFm8chAhzWU5DJn2m5sRKPw&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Koi Gate",amount:"IDR 42,750,000",date:"01 Oct 2026",img:"https://images.weserv.nl/?url=habanerosystems.com/games/SGTheKoiGate",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Hot Hot Fruit",amount:"IDR 18,900,000",date:"02 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSihci_OkLKEnLU2HE8W4BUXc22QMb9531hHAg9ANdzLA&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Fa Cai Shen Deluxe",amount:"IDR 125,600,000",date:"02 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxyKLSCG_k4hl4hYf988QNrAnjOONsyZsntJ_HolA8PQ&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Laughing Buddha",amount:"IDR 67,450,000",date:"03 Oct 2026",img:"https://igamingbusiness.com/img-srv/Yvm9lgjYRkyL5nsadnVhCU0YcU_CGw_gZ9YD0babr2A/resizing_type:auto/width:0/height:0/gravity:sm/enlarge:1/ext:webp/strip_metadata:1/quality:90/cachebuster:filesize-246361/bG9jYWw6Ly8vaWdhbWluZ2J1c2luZXNzLmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAyMi8wOC9IYWJhbmVyby1MYXVnaGluZy1CdWRkaGEuanBn.webp",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Egyptian Dreams Deluxe",amount:"IDR 31,800,000",date:"03 Oct 2026",img:"https://igamingbusiness.com/img-srv/5CaFWBvOS_FX6KFx6AyL65PW_xb12v--Q73Kpbv-fqU/resizing_type:auto/width:0/height:0/gravity:sm/enlarge:1/ext:webp/strip_metadata:1/quality:90/cachebuster:filesize-120514/bG9jYWw6Ly8vaWdhbWluZ2J1c2luZXNzLmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAyMC8wOC8zMDB4MTc1LUhhYmFuZXJvLVNsb3RzLU5ld3MtRWd5cHRpYW4tRHJlYW1zLURlbHV4ZS5wbmc.webp",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Ways Of Fortune",amount:"IDR 84,200,000",date:"04 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO2LmHxOPKkPmbeJPaviH71N_jjoX703olp4cn6yfRddtM_CHmK7aXOhE&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Knockout Football",amount:"IDR 53,750,000",date:"04 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShsStiZ8Vcf3so1D-ctFT1oS3wCcHn4MILs0dtkQxMwg&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Dragon Tiger",amount:"IDR 112,500,000",date:"05 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ73BL8F9zMA_pUiyKgLGTawos9vc2Bqypc-4H1g2Wb-A&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Presto!",amount:"IDR 27,350,000",date:"05 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROztOejnf13Yl0ymp9nT3mf42IuaNXvJyBj4X7Q_Kn_Q&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Nuwa",amount:"IDR 76,900,000",date:"06 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXif-OTOUl3TgGJ1PzjF3QO5WfRDcnJlhSNK4GntS6bg&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Wild Trucks",amount:"IDR 39,650,000",date:"06 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT68-_3C4qaPm3IJQyZTaVb8sCjAVf1VE0d-CWp82mqMg&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"5 Mariachis",amount:"IDR 22,450,000",date:"07 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpaoPMP4Hdrft7ITqwweZZYmGiWc0QolAcfbLjYh2OaQ&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Glam Rock",amount:"IDR 91,700,000",date:"08 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW-Dl3Ehqpvk0KKlvR1RJjzf5zjOFtW4fEfl4bOWOxTB9FXKGWqDls0mQ&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Sky's the Limit",amount:"IDR 35,250,000",date:"08 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq8SovnxR0StB5hKakC6rynf_vJk8xLwG3YW0giizSxg&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Zeus",amount:"IDR 58,600,000",date:"09 Oct 2026",img:"https://igamingbusiness.com/img-srv/K98YQfdY8yFEPPApKbGgJlX378_tEplYGjs_9k4xsfw/resizing_type:auto/width:0/height:0/gravity:sm/enlarge:1/ext:webp/strip_metadata:1/quality:90/cachebuster:filesize-811066/bG9jYWw6Ly8vaWdhbWluZ2J1c2luZXNzLmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAyMy8xMS9aZXVzLURlbHV4ZV8xMjgweDcyMC5qcGc.webp",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Joker Poker",amount:"IDR 109,350,000",date:"09 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK40iLaPCjiIyYL_3DUpWxt4R8viEZB7c1heKkvcnASw&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Fire Rooster",amount:"IDR 46,850,000",date:"09 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfuacYkOBzM11OiQBFaZLiqKeFBlQXlyFee-_egGt4cQ&s",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Lucky Durian",amount:"IDR 73,550,000",date:"09 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWQ5C9a6d-rZ_yQ4gsfanbY95cIsxI9bnEOd8nwV30xw&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Wild Trucks",amount:"IDR 73,550,000",date:"09 Oct 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgdXsD4Q5dQ73NFbx8YIIGqzI_ZPMzio_apNfZK4qseg&s=10",playUrl:"https://wadah4d02.com/"},
+ {p:"habanero",provider:"Habanero",game:"Fa Cai Shen",amount:"IDR 96,300,000",date:"06 Sep 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgdXsD4Q5dQ73NFbx8YIIGqzI_ZPMzio_apNfZK4qseg&s=10",playUrl:"https://wadah4d02.com/"},
+  
+ {p:"nolimit",provider:"Nolimit City",game:"Mental",amount:"IDR 87,560,000",date:"05 Sep 2026",img:"https://i.postimg.cc/d3pVC6Dv/image.png",playUrl:"https://wadah4d02.com/"},
+
+ {p:"spade",provider:"Spadegaming",game:"Lucky Koi",amount:"IDR 54,210,000",date:"05 Sep 2026",img:"https://static.casino.guru/pict/682007/Lucky-Koi-Exclusive.png?timestamp=1706599803000&imageDataId=752128&width=320&height=247",playUrl:"https://wadah4d02.com/"},
+
+ {p:"habanero",provider:"Habanero",game:"Hot Hot Fruit",amount:"IDR 31,250,000",date:"04 Sep 2026",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6RkuTP3DPt5BvHw_2mf_SjLF_iEaabCouYW6Uerk6jAvJLc3mMJV662RD&s=10",playUrl:"https://wadah4d02.com/"}
+];
+
+
+const gallery=document.getElementById("gallery");
+const empty=document.getElementById("empty");
+const total=document.getElementById("total");
+const result=document.getElementById("result");
+const searchInput=document.getElementById("searchInput");
+
+
+function render(list){
+
+  gallery.innerHTML="";
+
+  total.textContent=list.length;
+  result.textContent=list.length+" album";
+
+  empty.style.display=list.length?"none":"block";
+
+
+  list.forEach(x=>{
+
+    const card=document.createElement("article");
+
+    card.className="card";
+
+    card.innerHTML=`
+      <div class="photo">
+        <span>BUKTI FOTO</span>
+      </div>
+
+      <div class="info">
+        <div class="provider-name">${x.provider}</div>
+        <div class="game">${x.game}</div>
+        <div class="amount">${x.amount}</div>
+        <div class="date">${x.date}</div>
+      </div>
+    `;
+
+
+    const photo=card.querySelector(".photo");
+
+    const img=new Image();
+
+    img.src=x.img;
+    img.alt=x.game;
+
+
+    img.onload=()=>{
+
+      photo.innerHTML="";
+
+      /* GAMBAR */
+      photo.appendChild(img);
+
+
+      /* =========================
+         TOMBOL VIEW
+      ========================= */
+
+      const view=document.createElement("div");
+
+      view.style.cssText=
+        "position:absolute;" +
+        "right:43px;" +
+        "bottom:7px;" +
+        "background:rgba(0,0,0,.72);" +
+        "color:#fff;" +
+        "border:1px solid #555;" +
+        "border-radius:5px;" +
+        "padding:4px 6px;" +
+        "font-size:7px;" +
+        "cursor:pointer;" +
+        "z-index:10;";
+
+      view.textContent="VIEW";
+
+
+      /* VIEW KLIK */
+      view.onclick=(e)=>{
+        e.stopPropagation();
+        openImage(x.img);
+      };
+
+
+      photo.appendChild(view);
+
+
+      /* =========================
+         TOMBOL PLAY
+      ========================= */
+
+      const play=document.createElement("button");
+
+      play.type="button";
+
+      play.textContent="PLAY";
+
+      play.style.cssText=
+        "position:absolute;" +
+        "right:7px;" +
+        "bottom:7px;" +
+        "background:rgba(0,0,0,.85);" +
+        "color:#fff;" +
+        "border:1px solid #55c7ff;" +
+        "border-radius:5px;" +
+        "padding:4px 8px;" +
+        "font-size:7px;" +
+        "font-weight:800;" +
+        "cursor:pointer;" +
+        "z-index:10;" +
+        "transition:.2s ease;";
+
+
+      /* PLAY KLIK */
+      play.onclick=(e)=>{
+
+        e.stopPropagation();
+
+        if(x.playUrl){
+
+          window.open(
+            x.playUrl,
+            "_blank",
+            "noopener,noreferrer"
+          );
+
         }
 
-        function renderLeaderboard(query = "") {
-            const normalizedQuery = query
-                .trim()
-                .toLocaleLowerCase("id-ID");
+      };
 
-            const filteredParticipants = participants
-                .filter((participant) => {
-                    return participant.username
-                        .toLocaleLowerCase("id-ID")
-                        .includes(normalizedQuery);
-                })
-                .sort((a, b) => b.score - a.score);
 
-            tableBody.replaceChildren();
+      photo.appendChild(play);
 
-            participantCount.textContent =
-                `${filteredParticipants.length} peserta`;
+    };
 
-            filteredParticipants.forEach((participant, index) => {
-                const row = document.createElement("tr");
 
-                row.appendChild(
-                    createCell(String(index + 1), "rank")
-                );
+    /* KLIK GAMBAR */
+    photo.onclick=()=>openImage(x.img);
 
-                row.appendChild(
-                    createCell(participant.username, "username")
-                );
 
-                const formattedScore = Number(
-                    participant.score
-                ).toLocaleString("id-ID");
+    gallery.appendChild(card);
 
-                row.appendChild(
-                    createCell(formattedScore, "score")
-                );
+  });
 
-                tableBody.appendChild(row);
-            });
+}
 
-            const hasResults = filteredParticipants.length > 0;
 
-            emptyState.hidden = hasResults;
+function filterProvider(p){
 
-            if (!hasResults) {
-                if (normalizedQuery) {
-                    emptyTitle.textContent = "Peserta tidak ditemukan";
+  document
+    .querySelectorAll(".provider")
+    .forEach(b=>
+      b.classList.toggle(
+        "active",
+        b.dataset.provider===p
+      )
+    );
 
-                    emptyDescription.textContent =
-                        "Coba gunakan kata kunci pencarian yang berbeda.";
-                } else {
-                    emptyTitle.textContent = "Data belum tersedia";
+  applyFilter(p,searchInput.value);
 
-                    emptyDescription.textContent =
-                        "Klasemen akan ditampilkan setelah data peserta tersedia.";
-                }
-            }
-        }
+}
 
-        searchForm.addEventListener("submit", (event) => {
-            event.preventDefault();
-            renderLeaderboard(searchInput.value);
-        });
 
-        searchInput.addEventListener("input", () => {
-            renderLeaderboard(searchInput.value);
-        });
+function applyFilter(p,query){
 
-        document.getElementById("current-year").textContent =
-            new Date().getFullYear();
+  const q=query.trim().toLowerCase();
 
-        renderLeaderboard();
-    </script>
+  let list=
+    p==="all"
+      ?data
+      :data.filter(x=>x.p===p);
 
+
+  if(q){
+
+    list=list.filter(x=>
+      (
+        x.provider+" "+
+        x.game+" "+
+        x.amount
+      )
+      .toLowerCase()
+      .includes(q)
+    );
+
+  }
+
+
+  render(list);
+
+}
+
+
+document
+  .querySelectorAll(".provider")
+  .forEach(b=>{
+
+    b.addEventListener(
+      "click",
+      ()=>filterProvider(b.dataset.provider)
+    );
+
+  });
+
+
+searchInput.addEventListener(
+  "input",
+  ()=>{
+
+    const active=
+      document
+        .querySelector(".provider.active")
+        .dataset.provider;
+
+    applyFilter(
+      active,
+      searchInput.value
+    );
+
+  }
+);
+
+
+function openImage(src){
+
+  document
+    .getElementById("lightboxImg")
+    .src=src;
+
+  document
+    .getElementById("lightbox")
+    .classList.add("show");
+
+}
+
+
+document
+  .getElementById("close")
+  .onclick=()=>{
+
+    document
+      .getElementById("lightbox")
+      .classList
+      .remove("show");
+
+  };
+
+
+document
+  .getElementById("lightbox")
+  .onclick=e=>{
+
+    if(e.target.id==="lightbox"){
+
+      e.currentTarget
+        .classList
+        .remove("show");
+
+    }
+
+  };
+
+
+render(data);
+</script>
 </body>
 </html>
